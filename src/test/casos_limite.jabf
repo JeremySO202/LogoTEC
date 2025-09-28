@@ -1,0 +1,107 @@
+// {Casos límite y sintaxis específica}
+
+// Procedimiento vacío
+PARA vacio []
+FIN
+
+// Procedimiento con un solo parámetro
+PARA mover [ distancia ]
+AVANZA distancia;
+FIN
+
+// Variables con todos los tipos
+INIC entero = 42;
+INIC texto = "LogoTEC";
+INIC booleano_true = TRUE;
+INIC booleano_false = FALSE;
+
+// Operaciones matemáticas con un solo operando donde sea posible
+INIC random = AZAR 100;
+
+// Operaciones con múltiples operandos
+INIC suma_multiple = SUMA 1 2 3 4 5;
+INIC producto_multiple = PRODUCTO 2 3 4;
+INIC diferencia_multiple = DIFERENCIA 100 20 10 5;
+
+// INC con diferentes formatos
+INC [ entero 1 ];
+INC [ entero ];
+
+// Todas las abreviaciones
+AV 50;
+RE 25;
+GD 90;
+GI 45;
+OT;
+BL;
+SB;
+PONCL NEGRO;
+
+// Condicional sin else
+SI (IGUALES entero 43) [
+CENTRO;
+];
+
+// Bucle con una sola instrucción
+REPITE 1 [
+AVANZA 10;
+];
+
+// MIENTRAS con condición simple
+MIENTRAS (MENORQUE entero 45) [
+INC [ entero 1 ];
+];
+
+// Reset para próxima prueba
+INIC entero = 50;
+
+// HASTA con condición simple
+HASTA (MAYORQUE entero 55) [
+INC [ entero 1 ];
+];
+
+// HAZ.HASTA con una iteración
+HAZ.HASTA [
+AVANZA 5;
+] (TRUE);
+
+// HAZ.MIENTRAS que no ejecuta
+HAZ.MIENTRAS [
+AVANZA 1;
+] (FALSE);
+
+// Operaciones lógicas simples
+INIC test_y = Y TRUE TRUE;
+INIC test_o = O FALSE TRUE;
+
+// Comparaciones con variables
+INIC comp1 = IGUALES entero 56;
+INIC comp2 = MAYORQUE entero 50;
+INIC comp3 = MENORQUE entero 60;
+
+// EJECUTA con una sola instrucción
+EJECUTA [
+CENTRO;
+];
+
+// Llamadas a procedimientos
+HAZ vacio;
+HAZ mover 30;
+
+// Espera mínima
+ESPERA 1;
+
+// Posicionamiento con números directos
+PONPOS [ 0 0 ];
+PONXY 1 1;
+PONX 2;
+PONY 3;
+PONRUMBO 0;
+
+// Todas las instrucciones básicas sin parámetros
+CENTRO;
+BAJALAPIZ;
+SUBELAPIZ;
+OCULTATORTUGA;
+
+FIN
