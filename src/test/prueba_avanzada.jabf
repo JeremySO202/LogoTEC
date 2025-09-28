@@ -1,6 +1,6 @@
 // {Pruebas avanzadas - Estructuras complejas}
 
-// Procedimiento con múltiples parámetros
+// Procedimiento con multiples parametros
 PARA dibujar_rectangulo [ ancho alto ]
 AVANZA ancho;
 GIRADERECHA 90;
@@ -13,11 +13,11 @@ GIRADERECHA 90;
 FIN
 
 // Procedimiento recursivo simple
-PARA espiral [ tamaño ]
-SI (MAYORQUE tamaño 5) [
-AVANZA tamaño;
+PARA espiral [ tamano ]
+SI (MAYORQUE? tamano 5) [
+AVANZA tamano;
 GIRADERECHA 90;
-HAZ espiral (DIFERENCIA tamaño 10);
+HAZ espiral (DIFERENCIA tamano 10);
 ];
 FIN
 
@@ -37,7 +37,7 @@ AVANZA 30;
 
 // Posicionamiento absoluto y relativo
 CENTRO;
-PONPOS [ 50 50 ];
+PONPOS [50 50];
 AVANZA 25;
 PONXY 100 100;
 GIRADERECHA 45;
@@ -45,15 +45,15 @@ PONX 150;
 AVANZA 25;
 PONY 150;
 
-// Operaciones lógicas complejas
+// Operaciones logicas complejas
 INIC verdadero = TRUE;
 INIC falso = FALSE;
 INIC a = 15;
 INIC b = 20;
 INIC c = 15;
 
-// Comparaciones múltiples
-SI (Y (IGUALES a c) (MAYORQUE b a)) [
+// Comparaciones multiples
+SI (Y IGUALES? a c MAYORQUE? b a) [
 PONCOLORLAPIZ AZUL;
 REPITE 4 [
 AVANZA 40;
@@ -61,7 +61,7 @@ GIRADERECHA 90;
 ];
 ];
 
-SI (O (MENORQUE a 10) (IGUALES b 20)) [
+SI (O MENORQUE? a 10 IGUALES? b 20) [
 CENTRO;
 HAZ espiral 100;
 ];
@@ -79,27 +79,27 @@ PONCOLORLAPIZ AZUL;
 
 // Mientras con operaciones
 INIC iterador = 1;
-MIENTRAS (MENORQUE iterador 4) [
-HAZ dibujar_rectangulo (PRODUCTO iterador 20) (SUMA iterador 30);
+MIENTRAS (MENORQUE? iterador 4) [
+HAZ dibujar_rectangulo (PRODUCTO iterador 20);
 GIRADERECHA 90;
-INC [ iterador 1 ];
+INC [iterador 1];
 ];
 
-// Haz-hasta con cálculos
+// Haz hasta con calculos
 INIC contador_hasta = 0;
 HAZ.HASTA [
 AVANZA (SUMA contador_hasta 10);
 GIRADERECHA 45;
-INC [ contador_hasta 1 ];
-] (IGUALES contador_hasta 8);
+INC [contador_hasta 1];
+] (IGUALES? contador_hasta 8);
 
-// Uso de RUMBO
+// Uso de cosas
 INIC direccion_actual = RUMBO;
 
-// Ejecución con operaciones anidadas
+// Ejecucion con operaciones anidadas
 EJECUTA [
 INIC temp = AZAR 50;
-SI (MAYORQUE temp 25) [
+SI (MAYORQUE? temp 25) [
 PONCOLORLAPIZ NEGRO;
 ] [
 PONCOLORLAPIZ AZUL;
@@ -107,7 +107,7 @@ PONCOLORLAPIZ AZUL;
 AVANZA temp;
 ];
 
-// Control avanzado del lápiz
+// Control avanzado del lapiz
 SUBELAPIZ;
 PONXY 200 200;
 BAJALAPIZ;
@@ -116,6 +116,5 @@ HAZ dibujar_cuadrado 40;
 // Esperas variables
 ESPERA (PRODUCTO 500 2);
 
-// Finalización
+// Finalizacion
 OCULTATORTUGA;
-FIN

@@ -1,7 +1,7 @@
 // {Prueba completa - Todas las instrucciones LogoTEC}
 
 // Procedimiento con parametros
-PARA dibujar_cuadrado [ lado ]
+PARA dibujar_cuadrado [lado]
 AVANZA lado;
 GIRADERECHA 90;
 AVANZA lado;
@@ -13,6 +13,7 @@ GIRADERECHA 90;
 FIN
 
 // Procedimiento sin parametros
+
 PARA configuracion_inicial []
 CENTRO;
 BAJALAPIZ;
@@ -21,6 +22,7 @@ PONRUMBO 0;
 FIN
 
 // Procedimiento para operaciones matematicas
+
 PARA test_matematicas []
 INIC num1 = 10;
 INIC num2 = 5;
@@ -30,16 +32,15 @@ INIC resultado_division = DIVISION num1 num2;
 INIC resultado_potencia = POTENCIA num1 num2;
 INIC resultado_diferencia = DIFERENCIA num1 num2;
 INIC numero_random = AZAR 100;
-
 FIN
 
 // Procedimiento para operaciones logicas y comparativas
 PARA test_logica []
 INIC x = 20;
 INIC y = 15;
-INIC es_mayor = MAYORQUE x y;
-INIC es_menor = MENORQUE x y;
-INIC son_iguales = IGUALES x y;
+INIC es_mayor = MAYORQUE? x y;
+INIC es_menor = MENORQUE? x y;
+INIC son_iguales = IGUALES? x y;
 INIC operacion_y = Y TRUE FALSE;
 INIC operacion_o = O TRUE FALSE;
 FIN
@@ -51,7 +52,7 @@ INIC activo = TRUE;
 INIC color_actual = "AZUL";
 
 // Configuracion inicial
-HAZ configuracion_inicial;
+HAZ configuracion_inicial 10;
 
 // Instrucciones basicas de movimiento
 AVANZA 100;
@@ -60,7 +61,7 @@ GIRADERECHA 45;
 GIRAIZQUIERDA 90;
 
 // Control de posicion
-PONPOS [ 100 150 ];
+PONPOS [100 150];
 PONXY 200 250;
 PONX 300;
 PONY 400;
@@ -74,21 +75,21 @@ PONCOLORLAPIZ NEGRO;
 
 // Operaciones con variables
 INIC nueva_var = 25;
-HAZ test_matematicas;
-HAZ test_logica;
+HAZ test_matematicas 20;
+HAZ test_logica 30;
 
 // Incremento
-INC [ contador 1 ];
-INC [ contador ];
+INC [contador 1];
+INC [contador];
 
 // Condicional simple
-SI (IGUALES contador 1) [
+SI (IGUALES? contador 1) [
 PONCOLORLAPIZ AZUL;
 AVANZA 75;
 ];
 
 // Condicional con else
-SI (MAYORQUE lado_cuadrado 40) [
+SI (MAYORQUE? lado_cuadrado 40) [
 HAZ dibujar_cuadrado lado_cuadrado;
 GIRADERECHA 30;
 ] [
@@ -103,42 +104,42 @@ GIRADERECHA 60;
 ];
 
 // Bucle mientras
-MIENTRAS (MENORQUE contador 5) [
+MIENTRAS (MENORQUE? contador 5) [
 AVANZA 20;
-INC [ contador 1 ];
+INC [contador 1];
 GIRADERECHA 45;
 ];
 
 // Reset contador para siguiente prueba
 INIC contador = 0;
 
-// Bucle haz-hasta
+// Bucle hazhasta
 HAZ.HASTA [
 RETROCEDE 15;
-INC [ contador 1 ];
+INC [contador 1];
 GIRADERECHA 30;
-] (MAYORQUE contador 3);
+] (MAYORQUE? contador 3);
 
 // Bucle hasta
-HASTA (IGUALES contador 8) [
+HASTA (IGUALES? contador 8) [
 AVANZA 10;
-INC [ contador 1 ];
+INC [contador 1];
 ];
 
 // Reset contador
 INIC contador = 0;
 
-// Bucle haz-mientras
+// Bucle haz mientras
 HAZ.MIENTRAS [
 PONCOLORLAPIZ AZUL;
 AVANZA 25;
 GIRADERECHA 72;
-INC [ contador 1 ];
-] (MENORQUE contador 5);
+INC [contador 1];
+] (MENORQUE? contador 5);
 
 // Ejecucion de bloque de codigo
 EJECUTA [
-PONPOS [ 0 0 ];
+PONPOS [0 0];
 CENTRO;
 PONCOLORLAPIZ NEGRO;
 AVANZA 80;
@@ -154,4 +155,3 @@ HAZ dibujar_cuadrado 80;
 // Instrucciones finales
 OCULTATORTUGA;
 CENTRO;
-FIN
