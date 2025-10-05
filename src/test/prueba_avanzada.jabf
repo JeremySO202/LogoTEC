@@ -1,0 +1,120 @@
+// {Pruebas avanzadas - Estructuras complejas}
+
+// Procedimiento con multiples parametros
+PARA dibujar_rectangulo [ ancho alto ]
+AVANZA ancho;
+GIRADERECHA 90;
+AVANZA alto;
+GIRADERECHA 90;
+AVANZA ancho;
+GIRADERECHA 90;
+AVANZA alto;
+GIRADERECHA 90;
+FIN
+
+// Procedimiento recursivo simple
+PARA espiral [ tamano ]
+SI (MAYORQUE? tamano 5) [
+AVANZA tamano;
+GIRADERECHA 90;
+HAZ espiral (DIFERENCIA tamano 10);
+];
+FIN
+
+// Variables con operaciones complejas
+INIC base = 10;
+INIC exponente = 2;
+INIC resultado = POTENCIA base exponente;
+INIC calculo_complejo = SUMA (PRODUCTO 5 3) (DIVISION 20 4) resultado;
+
+// Prueba de todos los colores
+PONCOLORLAPIZ NEGRO;
+AVANZA 30;
+PONCOLORLAPIZ AZUL;
+AVANZA 30;
+PONCOLORLAPIZ ROJO;
+AVANZA 30;
+
+// Posicionamiento absoluto y relativo
+CENTRO;
+PONPOS [50 50];
+AVANZA 25;
+PONXY 100 100;
+GIRADERECHA 45;
+PONX 150;
+AVANZA 25;
+PONY 150;
+
+// Operaciones logicas complejas
+INIC verdadero = TRUE;
+INIC falso = FALSE;
+INIC a = 15;
+INIC b = 20;
+INIC c = 15;
+
+// Comparaciones multiples
+SI (Y IGUALES? a c MAYORQUE? b a) [
+PONCOLORLAPIZ AZUL;
+REPITE 4 [
+AVANZA 40;
+GIRADERECHA 90;
+];
+];
+
+SI (O MENORQUE? a 10 IGUALES? b 20) [
+CENTRO;
+HAZ espiral 100;
+];
+
+// Bucles anidados
+REPITE 3 [
+PONCOLORLAPIZ ROJO;
+REPITE 4 [
+AVANZA 20;
+GIRADERECHA 90;
+];
+GIRADERECHA 120;
+PONCOLORLAPIZ AZUL;
+];
+
+// Mientras con operaciones
+INIC iterador = 1;
+MIENTRAS (MENORQUE? iterador 4) [
+HAZ dibujar_rectangulo (PRODUCTO iterador 20);
+GIRADERECHA 90;
+INC [iterador 1];
+];
+
+// Haz hasta con calculos
+INIC contador_hasta = 0;
+HAZ.HASTA [
+AVANZA (SUMA contador_hasta 10);
+GIRADERECHA 45;
+INC [contador_hasta 1];
+] (IGUALES? contador_hasta 8);
+
+// Uso de cosas
+INIC direccion_actual = RUMBO;
+
+// Ejecucion con operaciones anidadas
+EJECUTA [
+INIC temp = AZAR 50;
+SI (MAYORQUE? temp 25) [
+PONCOLORLAPIZ NEGRO;
+] [
+PONCOLORLAPIZ AZUL;
+];
+AVANZA temp;
+];
+
+// Control avanzado del lapiz
+SUBELAPIZ;
+PONXY 200 200;
+BAJALAPIZ;
+HAZ dibujar_cuadrado 40;
+
+// Esperas variables
+ESPERA (PRODUCTO 500 2);
+
+// Finalizacion
+OCULTATORTUGA;

@@ -1,0 +1,29 @@
+// {Pruebas basicas - LogoTEC}
+
+// Procedimiento simple
+PARA test_basico []
+AVANZA 50;
+GIRADERECHA 90;
+FIN
+
+// Variables y operaciones basicas
+INIC x = 10;
+INIC y = 20;
+INIC suma_total = SUMA x y;
+
+// Instrucciones basicas
+CENTRO;
+BAJALAPIZ;
+HAZ test_basico 10;
+PONCOLORLAPIZ AZUL;
+
+// Condicional
+SI (IGUALES? x 10) [
+AVANZA 100;
+];
+
+// Repeticion
+REPITE 3 [
+GIRADERECHA 120;
+AVANZA 80;
+];
