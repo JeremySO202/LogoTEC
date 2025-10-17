@@ -1,16 +1,6 @@
 import Parser.LogoTECBaseVisitor;
-import Parser.LogoTECParser;
 
-public class LogoTECVisitor extends LogoTECBaseVisitor {
-
-
-    @Override public Object visitProg(LogoTECParser.ProgContext ctx) {
-        System.out.println("Se inicio el programa");
-        return visitChildren(ctx);
-    }
-
-    @Override public Object visitStat(LogoTECParser.StatContext ctx) { return visitChildren(ctx); }
-
-    @Override public Object visitExpr(LogoTECParser.ExprContext ctx) { return visitChildren(ctx); }
-
+public class LogoTECVisitor extends LogoTECBaseVisitor<Void> {
+    // Esta clase previa estaba desactualizada respecto a la gramática actual.
+    // Se deja como un visitante vacío para no romper la compilación.
 }

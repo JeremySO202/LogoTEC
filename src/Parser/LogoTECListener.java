@@ -1,4 +1,4 @@
-// Generated from /home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/LogoTEC.g4 by ANTLR 4.13.2
+// Generated from C:/Users/menei/Documents/GitHub/LogoTEC/LogoTEC.g4 by ANTLR 4.13.2
 package Parser;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -38,6 +38,16 @@ public interface LogoTECListener extends ParseTreeListener {
 	 */
 	void exitComentario(LogoTECParser.ComentarioContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link LogoTECParser#procedimientos}.
+	 * @param ctx the parse tree
+	 */
+	void enterProcedimientos(LogoTECParser.ProcedimientosContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LogoTECParser#procedimientos}.
+	 * @param ctx the parse tree
+	 */
+	void exitProcedimientos(LogoTECParser.ProcedimientosContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link LogoTECParser#procedimiento}.
 	 * @param ctx the parse tree
 	 */
@@ -67,6 +77,16 @@ public interface LogoTECListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitOrdenes(LogoTECParser.OrdenesContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LogoTECParser#orden}.
+	 * @param ctx the parse tree
+	 */
+	void enterOrden(LogoTECParser.OrdenContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LogoTECParser#orden}.
+	 * @param ctx the parse tree
+	 */
+	void exitOrden(LogoTECParser.OrdenContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LogoTECParser#instruccion}.
 	 * @param ctx the parse tree
@@ -148,16 +168,6 @@ public interface LogoTECListener extends ParseTreeListener {
 	 */
 	void exitGiraizquierda(LogoTECParser.GiraizquierdaContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LogoTECParser#ocultatortuga}.
-	 * @param ctx the parse tree
-	 */
-	void enterOcultatortuga(LogoTECParser.OcultatortugaContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LogoTECParser#ocultatortuga}.
-	 * @param ctx the parse tree
-	 */
-	void exitOcultatortuga(LogoTECParser.OcultatortugaContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link LogoTECParser#ponpos}.
 	 * @param ctx the parse tree
 	 */
@@ -208,6 +218,16 @@ public interface LogoTECListener extends ParseTreeListener {
 	 */
 	void exitPony(LogoTECParser.PonyContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link LogoTECParser#centro}.
+	 * @param ctx the parse tree
+	 */
+	void enterCentro(LogoTECParser.CentroContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LogoTECParser#centro}.
+	 * @param ctx the parse tree
+	 */
+	void exitCentro(LogoTECParser.CentroContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link LogoTECParser#bajalapiz}.
 	 * @param ctx the parse tree
 	 */
@@ -238,15 +258,15 @@ public interface LogoTECListener extends ParseTreeListener {
 	 */
 	void exitPoncolor(LogoTECParser.PoncolorContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LogoTECParser#centro}.
+	 * Enter a parse tree produced by {@link LogoTECParser#ocultatortuga}.
 	 * @param ctx the parse tree
 	 */
-	void enterCentro(LogoTECParser.CentroContext ctx);
+	void enterOcultatortuga(LogoTECParser.OcultatortugaContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link LogoTECParser#centro}.
+	 * Exit a parse tree produced by {@link LogoTECParser#ocultatortuga}.
 	 * @param ctx the parse tree
 	 */
-	void exitCentro(LogoTECParser.CentroContext ctx);
+	void exitOcultatortuga(LogoTECParser.OcultatortugaContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LogoTECParser#espera}.
 	 * @param ctx the parse tree

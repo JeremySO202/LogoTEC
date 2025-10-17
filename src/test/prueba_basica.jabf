@@ -2,7 +2,7 @@
 
 // Procedimiento simple
 PARA test_basico []
-AVANZA 50;
+AVANZA 60;
 GIRADERECHA 90;
 FIN
 

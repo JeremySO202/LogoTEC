@@ -1,4 +1,4 @@
-// Generated from /home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/LogoTEC.g4 by ANTLR 4.13.2
+// Generated from C:/Users/menei/Documents/GitHub/LogoTEC/LogoTEC.g4 by ANTLR 4.13.2
 package Parser;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -29,6 +29,12 @@ public interface LogoTECVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitComentario(LogoTECParser.ComentarioContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link LogoTECParser#procedimientos}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitProcedimientos(LogoTECParser.ProcedimientosContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link LogoTECParser#procedimiento}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -46,6 +52,12 @@ public interface LogoTECVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitOrdenes(LogoTECParser.OrdenesContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LogoTECParser#orden}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOrden(LogoTECParser.OrdenContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link LogoTECParser#instruccion}.
 	 * @param ctx the parse tree
@@ -95,12 +107,6 @@ public interface LogoTECVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitGiraizquierda(LogoTECParser.GiraizquierdaContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LogoTECParser#ocultatortuga}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitOcultatortuga(LogoTECParser.OcultatortugaContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link LogoTECParser#ponpos}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -131,6 +137,12 @@ public interface LogoTECVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPony(LogoTECParser.PonyContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link LogoTECParser#centro}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCentro(LogoTECParser.CentroContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link LogoTECParser#bajalapiz}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -149,11 +161,11 @@ public interface LogoTECVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPoncolor(LogoTECParser.PoncolorContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LogoTECParser#centro}.
+	 * Visit a parse tree produced by {@link LogoTECParser#ocultatortuga}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitCentro(LogoTECParser.CentroContext ctx);
+	T visitOcultatortuga(LogoTECParser.OcultatortugaContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link LogoTECParser#espera}.
 	 * @param ctx the parse tree
