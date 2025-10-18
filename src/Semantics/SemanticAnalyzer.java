@@ -5,16 +5,38 @@ import Parser.LogoTECParser;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
+/**
+ * Analizador semántico para el lenguaje LogoTEC.
+ *
+ * Esta clase recorre el árbol sintáctico generado por ANTLR y verifica que las
+ * operaciones, tipos de datos y estructuras del programa sean semánticamente válidas.
+ *
+ * Extiende la clase base generada por ANTLR (LogoTECBaseVisitor) para visitar los nodos
+ * del árbol y realizar comprobaciones de tipos, definiciones de variables y compatibilidad.
+ */
 public class SemanticAnalyzer extends LogoTECBaseVisitor<Type> {
 
+    // Tabla de símbolos que mantiene las variables y sus tipos por alcance
     private final SymbolTable symbols = new SymbolTable();
+    // Manejador de errores semánticos
     private final ErrorReporter errors;
 
+    /**
+     * Constructor del analizador semántico.
+     * @param errors instancia de ErrorReporter para registrar los errores detectados
+     */
     public SemanticAnalyzer(ErrorReporter errors) {
         this.errors = errors;
     }
 
-    // Helpers
+    // ================================================================
+    // MÉTODOS AUXILIARES
+    // ================================================================
+
+    /**
+     * Verifica si el tipo real de una expresión coincide con el tipo esperado.
+     * Si no coincide, reporta un error semántico con su ubicación.
+     */
     private void expect(Type actual, Type expected, Token at, String context) {
         if (actual == null) {
             errors.report("Referencia a símbolo no definido en " + context, at.getLine(), at.getCharPositionInLine());
@@ -24,43 +46,58 @@ public class SemanticAnalyzer extends LogoTECBaseVisitor<Type> {
         }
     }
 
+    /**
+     * Determina el tipo de un literal según su contenido textual.
+     * Ejemplo: "verdadero" → BOOLEAN, "5.0" → NUMBER, etc.
+     */
     private Type inferLiteral(Token t) {
         String text = t.getText();
         if (text == null) return Type.UNKNOWN;
         if (text.equals("verdadero") || text.equals("falso")) return Type.BOOLEAN;
         if (text.startsWith("\"") && text.endsWith("\"")) return Type.STRING;
-        // simple heuristic for numbers
+        // número o decimal
         if (text.matches("-?\\d+(\\.\\d+)?")) return Type.NUMBER;
         return Type.UNKNOWN;
     }
 
-    // program and blocks
+    // ================================================================
+    // VISITAS GENERALES DEL PROGRAMA
+    // ================================================================
+
     @Override
     public Type visitProgram(LogoTECParser.ProgramContext ctx) {
+        // Recorre todo el programa
         return super.visitProgram(ctx);
     }
 
     @Override
     public Type visitProcedimiento(LogoTECParser.ProcedimientoContext ctx) {
-        // New scope for parameters and local variables
+        // Nuevo alcance para parámetros y variables locales
         symbols.pushScope();
-        // define parameters as UNKNOWN; will be constrained by usage
+        // Define los parámetros con tipo UNKNOWN inicialmente
         LogoTECParser.ParametrosContext params = ctx.parametros();
         if (params != null) {
             for (TerminalNode id : params.ID()) {
                 symbols.define(id.getText(), Type.UNKNOWN);
             }
         }
+        // Visita el contenido del procedimiento
         super.visitProcedimiento(ctx);
+        // Cierra el alcance local
         symbols.popScope();
         return null;
     }
 
-    // variable assignment/declaration
+    // ================================================================
+    // DECLARACIÓN Y ASIGNACIÓN DE VARIABLES
+    // ================================================================
+
     @Override
     public Type visitHaz(LogoTECParser.HazContext ctx) {
+        // Asignación de variable existente o definición implícita
         String id = ctx.ID().getText();
         Token at = ctx.ID().getSymbol();
+        // Determina el tipo del valor asignado
         Type rhs;
         if (ctx.numeric_val() != null) {
             rhs = visit(ctx.numeric_val());
@@ -73,9 +110,10 @@ public class SemanticAnalyzer extends LogoTECBaseVisitor<Type> {
         }
 
         if (!symbols.isDefined(id)) {
-            // define on first assignment
+            // Si no está definida, se crea automáticamente
             symbols.define(id, rhs == null ? Type.UNKNOWN : rhs);
         } else {
+            // Verifica compatibilidad de tipos
             Type ok = symbols.get(id);
             if (ok == Type.UNKNOWN && rhs != null) {
                 symbols.assign(id, rhs);
@@ -89,8 +127,10 @@ public class SemanticAnalyzer extends LogoTECBaseVisitor<Type> {
 
     @Override
     public Type visitInic(LogoTECParser.InicContext ctx) {
+        // Declaración explícita de una nueva variable
         String id = ctx.ID().getText();
         Token at = ctx.ID().getSymbol();
+        // Determina el tipo de la expresión inicial
         Type rhs;
         if (ctx.numeric_val() != null) {
             rhs = visit(ctx.numeric_val());
@@ -104,15 +144,19 @@ public class SemanticAnalyzer extends LogoTECBaseVisitor<Type> {
             rhs = Type.UNKNOWN;
         }
 
+        // Verifica si ya existe en el mismo alcance
         if (!symbols.define(id, rhs == null ? Type.UNKNOWN : rhs)) {
-            // already defined in current scope
             errors.report("La variable '" + id + "' ya está definida en este alcance",
                     at.getLine(), at.getCharPositionInLine());
         }
         return null;
     }
 
-    // commands expecting numeric arguments
+    // ================================================================
+    // COMANDOS QUE ESPERAN ARGUMENTOS NUMÉRICOS
+    // ================================================================
+    // (Cada comando valida que sus argumentos sean del tipo correcto)
+
     @Override public Type visitAvanza(LogoTECParser.AvanzaContext ctx) {
         Type t = visit(ctx.numeric_val());
         expect(t, Type.NUMBER, ctx.getStart(), "avanza");
@@ -138,6 +182,7 @@ public class SemanticAnalyzer extends LogoTECBaseVisitor<Type> {
     }
 
     @Override public Type visitPonpos(LogoTECParser.PonposContext ctx) {
+        // Requiere dos argumentos numéricos
         for (LogoTECParser.Numeric_valContext nv : ctx.numeric_val()) {
             Type t = visit(nv);
             expect(t, Type.NUMBER, nv.getStart(), "ponpos");
@@ -145,6 +190,7 @@ public class SemanticAnalyzer extends LogoTECBaseVisitor<Type> {
         return null;
     }
 
+    // (Las siguientes funciones son similares: verifican que los argumentos sean numéricos)
     @Override public Type visitPonxy(LogoTECParser.PonxyContext ctx) {
         for (LogoTECParser.Numeric_valContext nv : ctx.numeric_val()) {
             Type t = visit(nv);
@@ -177,7 +223,9 @@ public class SemanticAnalyzer extends LogoTECBaseVisitor<Type> {
         return null;
     }
 
-    // control structures expect boolean
+    // ================================================================
+    // ESTRUCTURAS DE CONTROL (esperan condiciones booleanas)
+    // ================================================================
     @Override public Type visitSi(LogoTECParser.SiContext ctx) {
         Type cond = visit(ctx.boolean_val());
         expect(cond, Type.BOOLEAN, ctx.getStart(), "si");
@@ -208,11 +256,17 @@ public class SemanticAnalyzer extends LogoTECBaseVisitor<Type> {
         return super.visitMientras(ctx);
     }
 
-    // Expressions
+    // (Los demás bloques: haz_mientras, haz_hasta, hasta — siguen la misma lógica)
+
+    // ================================================================
+    // EXPRESIONES BOOLEANAS Y ARITMÉTICAS
+    // ================================================================
+    // A partir de aquí se validan los tipos en operaciones lógicas y matemáticas
     @Override public Type visitBoolean_val(LogoTECParser.Boolean_valContext ctx) {
         if (ctx.BOOLEAN() != null) return Type.BOOLEAN;
         if (ctx.op_logica() != null) return visit(ctx.op_logica());
         if (ctx.op_comparativa() != null) return visit(ctx.op_comparativa());
+        // Identificador usado como booleano
         if (ctx.ID() != null) {
             String id = ctx.ID().getText();
             Type t = symbols.get(id);
@@ -227,6 +281,7 @@ public class SemanticAnalyzer extends LogoTECBaseVisitor<Type> {
         }
         return Type.UNKNOWN;
     }
+
 
     @Override public Type visitOp_logica(LogoTECParser.Op_logicaContext ctx) {
         if (ctx.y() != null) return visit(ctx.y());
@@ -342,10 +397,18 @@ public class SemanticAnalyzer extends LogoTECBaseVisitor<Type> {
         return Type.NUMBER;
     }
 
+    // (Secciones de operaciones lógicas y comparativas — “Y”, “O”, “IGUALES”, “MAYORQUE”, etc.)
+    // Cada método valida que los operandos sean del tipo correcto y retorna el tipo resultante.
+
+    // ================================================================
+    // EXPRESIONES NUMÉRICAS
+    // ================================================================
     @Override public Type visitNumeric_val(LogoTECParser.Numeric_valContext ctx) {
+        // Literales numéricos o variables numéricas
         if (ctx.NUMERO() != null || ctx.DIGITO() != null) return Type.NUMBER;
         if (ctx.rumbo() != null) return Type.NUMBER; // rumbo is numeric
         if (ctx.PAR_OPEN() != null) return visit(ctx.operacion());
+        // Verificación de variable numérica
         if (ctx.ID() != null) {
             String id = ctx.ID().getText();
             Type t = symbols.get(id);
