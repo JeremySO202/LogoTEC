@@ -1,4 +1,4 @@
-// Generated from /home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/LogoTEC.g4 by ANTLR 4.13.2
+// Generated from C:/Users/menei/Documents/GitHub/LogoTEC/LogoTEC.g4 by ANTLR 4.13.2
 package Parser;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -53,6 +53,18 @@ public class LogoTECBaseListener implements LogoTECListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterProcedimientos(LogoTECParser.ProcedimientosContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitProcedimientos(LogoTECParser.ProcedimientosContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterProcedimiento(LogoTECParser.ProcedimientoContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -84,6 +96,18 @@ public class LogoTECBaseListener implements LogoTECListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitOrdenes(LogoTECParser.OrdenesContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOrden(LogoTECParser.OrdenContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOrden(LogoTECParser.OrdenContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -185,18 +209,6 @@ public class LogoTECBaseListener implements LogoTECListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOcultatortuga(LogoTECParser.OcultatortugaContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitOcultatortuga(LogoTECParser.OcultatortugaContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterPonpos(LogoTECParser.PonposContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -257,6 +269,18 @@ public class LogoTECBaseListener implements LogoTECListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterCentro(LogoTECParser.CentroContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCentro(LogoTECParser.CentroContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterBajalapiz(LogoTECParser.BajalapizContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -293,13 +317,13 @@ public class LogoTECBaseListener implements LogoTECListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCentro(LogoTECParser.CentroContext ctx) { }
+	@Override public void enterOcultatortuga(LogoTECParser.OcultatortugaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCentro(LogoTECParser.CentroContext ctx) { }
+	@Override public void exitOcultatortuga(LogoTECParser.OcultatortugaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
