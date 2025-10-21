@@ -18,6 +18,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.control.ScrollPane;
 
 
 public class HelloController implements Initializable {
@@ -31,6 +32,9 @@ public class HelloController implements Initializable {
 
     @FXML
     private Canvas canvas;
+
+    @FXML
+    private ScrollPane errorPanel;
 
     //if button "File" clicked scanner scans the file and adds ir to the text area("codeArea")
     public void openFile(ActionEvent actionEvent) {
@@ -121,6 +125,4 @@ public class HelloController implements Initializable {
             canvas.getGraphicsContext2D().clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         }
     }
-
-
 }
