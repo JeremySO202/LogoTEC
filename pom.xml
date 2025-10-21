@@ -7,36 +7,92 @@
     <artifactId>logotec</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>LogoTEC</name>
-    <description>LogoTEC language with ANTLR parser and semantic analysis</description>
+    <description>LogoTEC - Lenguaje de programación educativo con análisis semántico e intérprete gráfico</description>
     <packaging>jar</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <antlr4.runtime.version>4.13.2</antlr4.runtime.version>
+        <javafx.version>17.0.2</javafx.version>
     </properties>
 
     <dependencies>
+        <!-- ANTLR Runtime -->
         <dependency>
             <groupId>org.antlr</groupId>
             <artifactId>antlr4-runtime</artifactId>
             <version>${antlr4.runtime.version}</version>
         </dependency>
+
+        <!-- JavaFX Controls -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+
+        <!-- JavaFX FXML -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
-        <!-- Use existing source layout: src as the Java sources root -->
-        <sourceDirectory>${project.basedir}/src</sourceDirectory>
+        <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+
         <plugins>
+            <!-- Compilador Maven -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
                 <configuration>
-                    <release></release>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+
+            <!-- Maven JAR Plugin - Aplicación GUI -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.logotec.Launcher</mainClass>
+                            <addClasspath>true</addClasspath>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
+            <!-- JavaFX Maven Plugin - Para ejecutar la GUI -->
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.8</version>
+                <configuration>
+                    <mainClass>com.logotec.Launcher</mainClass>
+                </configuration>
+            </plugin>
+
+            <!-- Exec Maven Plugin - Para ejecutar análisis semántico desde línea de comandos -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <mainClass>com.logotec.SemanticTestMain</mainClass>
                 </configuration>
             </plugin>
         </plugins>

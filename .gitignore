@@ -1,29 +1,142 @@
-### IntelliJ IDEA ###
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
+# Archivos y directorios a ignorar en Git
 
-### Eclipse ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
+# Compilados de Maven
+target/
+*.class
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+# Archivos de IntelliJ IDEA
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries/
+.idea/shelf/
+.idea/usage.statistics.xml
+.idea/sonarlint/
+*.iws
 
-### VS Code ###
-.vscode/
+# Archivos de logs
+*.log
 
-### Mac OS ###
+# Archivos temporales del sistema operativo
 .DS_Store
+Thumbs.db
+*~
+.*.swp
+.*.swo
+
+# Directorios de dependencias
+node_modules/
+.m2/
+
+# Archivos de compilación de ANTLR (se regeneran)
+gen/
+*.tokens
+*.interp
+
+# Archivos de respaldo
+*.bak
+*.backup
+*~
+
+# Archivos de configuración local
+local.properties
+.settings/
+.classpath
+.project
+
+# JAR files (excepto librerías específicas)
+*.jar
+!javafx/lib/*.jar
+
+# Archivos de prueba temporales
+src/test/*.tmp
+src/test/*_output.*
+# LogoTEC - Guía de Ejecución Rápida
+
+## ✅ Formas CORRECTAS de ejecutar la aplicación:
+
+### Opción 1: Interfaz Gráfica con Maven (RECOMENDADO)
+```bash
+mvn javafx:run
+```
+
+### Opción 2: Análisis Semántico por Línea de Comandos
+```bash
+# Ejecutar con archivos de prueba predeterminados
+mvn exec:java
+
+# Analizar un archivo específico
+mvn exec:java -Dexec.args="src/test/prueba_basica.jabf"
+```
+
+### Opción 3: Ejecutar desde IntelliJ IDEA
+1. Ve al menú superior: **Run → Select Configuration**
+2. Elige:
+   - **"Run LogoTEC"** → Para la interfaz gráfica
+   - **"Semantic Analysis"** → Para análisis semántico
+3. Haz clic en el botón verde ▶️
+
+### Opción 4: Ejecutar el JAR compilado
+```bash
+mvn clean package
+java -jar target/logotec-1.0-SNAPSHOT.jar
+```
+
+## 🔧 Primera vez ejecutando el proyecto
+
+Si es la primera vez que ejecutas el proyecto:
+
+```bash
+# 1. Compilar e instalar dependencias
+mvn clean install
+
+# 2. Ejecutar la interfaz gráfica
+mvn javafx:run
+```
+
+## ❌ NO hacer esto:
+- ❌ NO ejecutes directamente `HelloApplication`
+- ❌ NO uses `java myapp.HelloApplication`
+- ❌ Siempre ejecuta `com.logotec.ui.Launcher` para la GUI
+
+## 📦 Nueva Estructura de Paquetes
+
+El proyecto ahora está organizado profesionalmente:
+
+```
+com.logotec/
+├── parser/        # Analizador léxico/sintáctico (ANTLR)
+├── semantics/     # Análisis semántico
+├── interpreter/   # Intérprete (futuro)
+└── ui/           # Interfaz gráfica (JavaFX)
+```
+
+## 💡 Comandos Útiles
+
+```bash
+# Limpiar y compilar
+mvn clean compile
+
+# Ver dependencias
+mvn dependency:tree
+
+# Ejecutar tests
+mvn test
+
+# Generar documentación
+mvn javadoc:javadoc
+```
+
+## 🐛 Problemas Comunes
+
+### Error: "No se encuentra la clase principal"
+**Solución**: Las clases ahora están en el paquete `com.logotec`. Asegúrate de que IntelliJ haya recargado el proyecto Maven.
+
+### Recargar proyecto en IntelliJ
+1. Haz clic derecho en el proyecto
+2. **Maven** → **Reload Project**
+3. O haz clic en el ícono de Maven 🔄 en la barra lateral
+
+---
+
+Para más detalles, consulta el archivo **README.md** principal.
+
