@@ -17,7 +17,10 @@ public class IRTestMain {
             source = Files.readString(Path.of(args[0]));
         } else {
             // Programa de prueba inline (puedes cambiarlo)
-            source = "INIC contador = 7;\nAVANZA 10;\nHAZ contador 5;\n";
+           //source = "INIC contador = 7;\nAVANZA 10;\nHAZ contador 5;\n";
+
+            //por la gramatica definida se debe colocar un comentario al inicio
+            source = "// {Prueba - IR}\nINIC contador = 7;\nAVANZA 10;\nHAZ contador 5;\n";
         }
 
         // Parse
