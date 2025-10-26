@@ -9,6 +9,7 @@ import org.antlr.v4.runtime.CommonTokenStream;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class IRTestMain {
     public static void main(String[] args) throws Exception {
@@ -75,7 +76,10 @@ public class IRTestMain {
         System.out.println("=== IR OPTIMIZADO ===");
         System.out.println(optimized);
 
-
+        IRToLLVMEmitter llvm = new IRToLLVMEmitter();
+        Path out = Paths.get("generated_code.ll");
+        llvm.emit(ir, out);
+        System.out.println("Generado LLVM IR en: " + out.toAbsolutePath());
 
     }
 }
