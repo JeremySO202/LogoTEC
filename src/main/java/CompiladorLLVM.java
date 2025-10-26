@@ -4,16 +4,16 @@ import java.io.InputStreamReader;
 public class CompiladorLLVM {
     public static void main(String[] args) {
         try {
-            // 1️⃣ Generar archivo objeto desde el .ll
+            // Generar archivo objeto desde el .ll
             ejecutarComando("llc -filetype=obj programa.ll -o programa.o");
 
-            // 2️⃣ Compilar el runtime en C++
+            // Compilar el runtime en C++
             ejecutarComando("clang++ -c native/logo_runtime.cpp -o logo_runtime.o");
 
-            // 3️⃣ Enlazar ambos objetos
+            // Enlazar ambos objetos
             ejecutarComando("clang++ programa.o logo_runtime.o  -no-pie -o programa");
 
-            // 4️⃣ Ejecutar el binario final
+            // Ejecutar el binario final
             ejecutarComando("./programa");
 
         } catch (Exception e) {

@@ -5,9 +5,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 
-/**
- * Emite LLVM IR (.ll) compatible con LLVM 14 desde un IR intermedio.
- */
 public class IRToLLVMEmitter {
 
     public void emit(IRProgram program, Path outFile) throws IOException {
