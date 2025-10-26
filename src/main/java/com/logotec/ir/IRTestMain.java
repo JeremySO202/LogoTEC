@@ -77,8 +77,8 @@ public class IRTestMain {
         System.out.println(optimized);
 
         IRToLLVMEmitter llvm = new IRToLLVMEmitter();
-        Path out = Paths.get("generated_code.ll");
-        llvm.emit(ir, out);
+        Path out = Paths.get("src/main/java/programa.ll");
+        llvm.emit(optimized, out);
         System.out.println("Generado LLVM IR en: " + out.toAbsolutePath());
 
     }
