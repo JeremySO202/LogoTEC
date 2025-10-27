@@ -75,7 +75,7 @@ public class IDLE_Controller implements Initializable {
     @FXML
     public void compile(ActionEvent actionEvent) {
         System.out.println("Compilando código...");
-        // TODO: Implementar compilación
+
     }
 
     /**

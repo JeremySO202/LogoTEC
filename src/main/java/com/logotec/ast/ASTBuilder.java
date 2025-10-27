@@ -186,6 +186,40 @@ public class ASTBuilder extends LogoTECBaseVisitor<Node> {
     }
 
     @Override
+    public Node visitBajalapiz(LogoTECParser.BajalapizContext ctx) {
+        Token t = ctx.getStart();
+        return new Bajalapiz(t.getLine(), t.getCharPositionInLine());
+    }
+
+    @Override
+    public Node visitSubelapiz(LogoTECParser.SubelapizContext ctx) {
+        Token t = ctx.getStart();
+        return new Subelapiz(t.getLine(), t.getCharPositionInLine());
+    }
+
+    @Override
+    public Node visitPoncolor(LogoTECParser.PoncolorContext ctx) {
+        // PONCOLORLAPIZ recibe un COLOR (token)
+        String colorText = ctx.COLOR().getText();
+        Token t = ctx.getStart();
+        Expr color = new LiteralExpr(colorText, t.getLine(), t.getCharPositionInLine());
+        return new Poncolorlapiz(color, t.getLine(), t.getCharPositionInLine());
+    }
+
+    @Override
+    public Node visitOcultatortuga(LogoTECParser.OcultatortugaContext ctx) {
+        Token t = ctx.getStart();
+        return new Ocultatortuga(t.getLine(), t.getCharPositionInLine());
+    }
+
+    @Override
+    public Node visitEspera(LogoTECParser.EsperaContext ctx) {
+        Expr tiempo = (Expr) visit(ctx.numeric_val());
+        Token t = ctx.getStart();
+        return new Espera(t.getLine(), t.getCharPositionInLine(), tiempo);
+    }
+
+    @Override
     public Node visitEjecuta(LogoTECParser.EjecutaContext ctx) {
         List<Node> body = extractNodesFromOrdenes(ctx.ordenes());
         Token t = ctx.getStart();

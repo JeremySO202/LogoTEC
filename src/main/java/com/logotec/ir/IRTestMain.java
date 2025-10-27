@@ -20,13 +20,9 @@ public class IRTestMain {
             //Prueba Combinada
             source = "// {Pruebas basicas - LogoTEC}\n" +
                     "\n" +
-                    "// Procedimiento simple\n" +
                     "INIC x = 10;\n" +
                     "INIC y = 20;\n" +
-                    "PARA test_basico1 [x y]\n" +
-                    "    AVANZA 60;\n" +
-                    "    GIRADERECHA 90;\n" +
-                    "FIN\n" +
+                    "INIC z = SUMA x y;\n" +
                     "\n" +
                     "// Variables y operaciones basicas\n" +
                     "INIC suma_total = SUMA x y;\n" +
@@ -34,19 +30,25 @@ public class IRTestMain {
                     "// Instrucciones basicas\n" +
                     "CENTRO;\n" +
                     "BAJALAPIZ;\n" +
-                    "HAZ test_basico 10;\n" +
                     "PONCOLORLAPIZ AZUL;\n" +
+                    "ESPERA 1000;\n" +
                     "\n" +
                     "// Condicional\n" +
                     "SI (IGUALES? x 10) [\n" +
                     "    AVANZA 100;\n" +
+                    "    GIRADERECHA 90;\n" +
                     "];\n" +
                     "\n" +
                     "// Repeticion\n" +
                     "REPITE 3 [\n" +
                     "    GIRADERECHA 120;\n" +
                     "    AVANZA 80;\n" +
-                    "];";
+                    "];\n" +
+                    "\n" +
+                    "SUBELAPIZ;\n" +
+                    "PONXY 50 50;\n" +
+                    "BAJALAPIZ;\n" +
+                    "OCULTATORTUGA;";
 
         }
 

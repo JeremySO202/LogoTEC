@@ -40,13 +40,14 @@ void logo_centro();
 // ============================================
 void logo_bajalapiz();
 void logo_subelapiz();
-void logo_poncolor(int color);  // 0=NEGRO, 1=AZUL, 2=ROJO
+void logo_poncolorlapiz(int color);  // 0=NEGRO, 1=AZUL, 2=ROJO, etc.
 
 // ============================================
 // Otras instrucciones
 // ============================================
 void logo_ocultatortuga();
 void logo_espera(double milliseconds);
+void logo_show();  // Mostrar el canvas (si es necesario)
 
 // ============================================
 // Operaciones matemáticas (retornan valores)

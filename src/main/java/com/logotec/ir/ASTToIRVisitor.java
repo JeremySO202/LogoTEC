@@ -81,6 +81,11 @@ public class ASTToIRVisitor implements ASTVisitor<IROperand> {
         if (node instanceof Ponx) return visitPonx((Ponx) node);
         if (node instanceof Pony) return visitPony((Pony) node);
         if (node instanceof Ponrumbo) return visitPonrumbo((Ponrumbo) node);
+        if (node instanceof Poncolorlapiz) return visitPoncolorlapiz((Poncolorlapiz) node);
+        if (node instanceof Bajalapiz) return visitBajalapiz((Bajalapiz) node);
+        if (node instanceof Subelapiz) return visitSubelapiz((Subelapiz) node);
+        if (node instanceof Ocultatortuga) return visitOcultatortuga((Ocultatortuga) node);
+        if (node instanceof Espera) return visitEspera((Espera) node);
         if (node instanceof Centro) return visitCentro((Centro) node);
         if (node instanceof Repite) return visitRepite((Repite) node);
         if (node instanceof Si) return visitSi((Si) node);
@@ -91,6 +96,7 @@ public class ASTToIRVisitor implements ASTVisitor<IROperand> {
         if (node instanceof Haz_mientras) return visitHaz_mientras((Haz_mientras) node);
         if (node instanceof Mientras) return visitMientras((Mientras) node);
         // unknown node: no-op
+        System.out.println("Warning: unhandled node type in ASTToIRVisitor: " + node.getLine());
         return null;
     }
 
@@ -142,19 +148,38 @@ public class ASTToIRVisitor implements ASTVisitor<IROperand> {
     public IROperand visitPonx(Ponx node) { program.add(new IRInstr("PONX", node.getX().accept(this))); return null; }
     public IROperand visitPony(Pony node) { program.add(new IRInstr("PONY", node.getY().accept(this))); return null; }
     public IROperand visitPonrumbo(Ponrumbo node) { program.add(new IRInstr("PONRUMBO", node.getRumbo().accept(this))); return null; }
+    public IROperand visitPoncolorlapiz(Poncolorlapiz node) { program.add(new IRInstr("PONCOLORLAPIZ", node.getColor().accept(this))); return null; }
+    public IROperand visitBajalapiz(Bajalapiz node) { program.add(new IRInstr("BAJALAPIZ")); return null; }
+    public IROperand visitSubelapiz(Subelapiz node) { program.add(new IRInstr("SUBELAPIZ")); return null; }
+    public IROperand visitOcultatortuga(Ocultatortuga node) { program.add(new IRInstr("OCULTATORTUGA")); return null; }
+    public IROperand visitEspera(Espera node) { program.add(new IRInstr("ESPERA", node.getTiempo().accept(this))); return null; }
     public IROperand visitCentro(Centro node) { program.add(new IRInstr("CENTRO")); return null; }
 
     public IROperand visitRepite(Repite node) {
         IROperand count = node.getCount().accept(this);
         String start = newLabel();
         String end = newLabel();
-        program.add(new IRInstr("LABEL", new IRConst(start)));
-        // decrement count and check
+
+        // Guardar contador en temporal
         IRTemp ctemp = newTemp();
         program.add(new IRInstr("STORE", ctemp, count));
+
+        // Label inicio del loop
+        program.add(new IRInstr("LABEL", new IRConst(start)));
+
+        // Ejecutar cuerpo
         for (Node n : node.getBody()) n.accept(this);
-        program.add(new IRInstr("DEC", ctemp));
-        program.add(new IRInstr("CJMP_GT", ctemp, new IRConst(0), new IRConst(start)));
+
+        // Decrementar: ctemp = ctemp - 1
+        IRTemp decremented = newTemp();
+        program.add(new IRInstr("SUB", decremented, ctemp, new IRConst(1.0)));
+        program.add(new IRInstr("STORE", ctemp, decremented));
+
+        // Comparar: si ctemp > 0, volver a start
+        IRTemp cmp = newTemp();
+        program.add(new IRInstr("GT", cmp, ctemp, new IRConst(0.0)));
+        program.add(new IRInstr("CJMP", cmp, new IRConst(start)));
+
         program.add(new IRInstr("LABEL", new IRConst(end)));
         return null;
     }
@@ -190,20 +215,41 @@ public class ASTToIRVisitor implements ASTVisitor<IROperand> {
     public IROperand visitHaz_hasta(Haz_hasta node) {
         // do { body } while (!cond)
         String start = newLabel();
+        String end = newLabel();
+
         program.add(new IRInstr("LABEL", new IRConst(start)));
         for (Node n : node.getBody()) n.accept(this);
+
+        // Evaluar condición
         IROperand cond = node.getCondicion().accept(this);
-        program.add(new IRInstr("CJMP_FALSE", cond, new IRConst(start)));
+
+        // Si cond es verdadera (!=0), terminar; sino, continuar loop
+        // Invertimos: si cond es falsa, volver a start
+        IRTemp notCond = newTemp();
+        program.add(new IRInstr("EQ", notCond, cond, new IRConst(0.0))); // notCond = (cond == 0)
+        program.add(new IRInstr("CJMP", notCond, new IRConst(start))); // si es falsa, repetir
+
+        program.add(new IRInstr("LABEL", new IRConst(end)));
         return null;
     }
 
     public IROperand visitHasta(Hasta node) {
-        // while (!cond) { body } with condition first? Grammar: HASTA (cond) [body]; implement as while cond false
+        // while (!cond) { body }
         String start = newLabel();
+        String end = newLabel();
+
         program.add(new IRInstr("LABEL", new IRConst(start)));
-        for (Node n : node.getBody()) n.accept(this);
+
+        // Evaluar condición al inicio
         IROperand cond = node.getCondicion().accept(this);
-        program.add(new IRInstr("CJMP_FALSE", cond, new IRConst(start)));
+
+        // Si cond es verdadera, salir; sino, ejecutar body
+        program.add(new IRInstr("CJMP", cond, new IRConst(end))); // si es true, salir
+
+        for (Node n : node.getBody()) n.accept(this);
+
+        program.add(new IRInstr("JMP", new IRConst(start))); // volver al inicio
+        program.add(new IRInstr("LABEL", new IRConst(end)));
         return null;
     }
 
