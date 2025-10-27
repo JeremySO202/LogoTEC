@@ -85,16 +85,6 @@
                     <mainClass>com.logotec.Launcher</mainClass>
                 </configuration>
             </plugin>
-
-            <!-- Exec Maven Plugin - Para ejecutar análisis semántico desde línea de comandos -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>3.1.0</version>
-                <configuration>
-                    <mainClass>com.logotec.SemanticTestMain</mainClass>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 </project>

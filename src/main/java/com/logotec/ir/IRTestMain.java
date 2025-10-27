@@ -17,36 +17,36 @@ public class IRTestMain {
         if (args.length > 0) {
             source = Files.readString(Path.of(args[0]));
         } else {
-            // ----------- Programas de prueba
-
-            //por la gramatica definida se debe colocar un comentario al inicio
-            //source = "// {Prueba - IR}\nINIC contador = 7;\nAVANZA 10;\nHAZ contador 5;\n";
-
-            //------Pruebas para la optimizacion----------
-
-            //Prueba para la Fusion de movimientos
-            /*source = "// {Prueba - Fusion de movimientos}\n" +
-                    "INIC contador = 7;\n" +
-                    "AVANZA 10;\n" +
-                    "AVANZA 15;\n" +
-                    "AVANZA 5;\n" +
-                    "HAZ contador 5;\n";*/
-
-            //Prueba para la Eliminacion de Stores
-            /*source = "// {Prueba - Eliminacion de stores}\n" +
-                    "HAZ x 10;\n" +
-                    "HAZ x 20;\n" +
-                    "AVANZA 5;\n";*/
-
-
-
             //Prueba Combinada
-            source = "// {Prueba - Combinada}\n" +
-                    "HAZ contador 1;\n" +
-                    "HAZ contador 2;\n" +
-                    "AVANZA 5;\n" +
-                    "AVANZA 10;\n" +
-                    "HAZ contador 3;\n";
+            source = "// {Pruebas basicas - LogoTEC}\n" +
+                    "\n" +
+                    "// Procedimiento simple\n" +
+                    "INIC x = 10;\n" +
+                    "INIC y = 20;\n" +
+                    "PARA test_basico1 [x y]\n" +
+                    "    AVANZA 60;\n" +
+                    "    GIRADERECHA 90;\n" +
+                    "FIN\n" +
+                    "\n" +
+                    "// Variables y operaciones basicas\n" +
+                    "INIC suma_total = SUMA x y;\n" +
+                    "\n" +
+                    "// Instrucciones basicas\n" +
+                    "CENTRO;\n" +
+                    "BAJALAPIZ;\n" +
+                    "HAZ test_basico 10;\n" +
+                    "PONCOLORLAPIZ AZUL;\n" +
+                    "\n" +
+                    "// Condicional\n" +
+                    "SI (IGUALES? x 10) [\n" +
+                    "    AVANZA 100;\n" +
+                    "];\n" +
+                    "\n" +
+                    "// Repeticion\n" +
+                    "REPITE 3 [\n" +
+                    "    GIRADERECHA 120;\n" +
+                    "    AVANZA 80;\n" +
+                    "];";
 
         }
 

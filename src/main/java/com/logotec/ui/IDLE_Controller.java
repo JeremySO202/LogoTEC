@@ -113,7 +113,7 @@ public class IDLE_Controller implements Initializable {
             }
             System.out.println();
         } catch (Exception e) {
-            System.err.println("❌ [FALLO] Error procesando: " + e.getMessage());
+            System.err.println("[FALLO] Error procesando: " + e.getMessage());
             e.printStackTrace(System.err);
         }
         return null;

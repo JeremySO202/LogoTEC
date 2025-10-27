@@ -38,15 +38,6 @@ public class IROptimizer {
                     optimized.remove(optimized.size() - 1); // elimina el anterior
                 }
             }
-
-            // ----------------------------------------------------------------------------------------
-            // 3️. Eliminación de código inalcanzable
-            // ----------------------------------------------------------------------------------------
-            if (op.equals("ENDPROC")) {
-                optimized.add(instr);
-                break; // nada después de ENDPROC
-            }
-
             optimized.add(instr);
             prev = instr;
 

@@ -1,55 +1,59 @@
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ast\BinaryExpr.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ast\Hasta.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ir\ASTToIRVisitor.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ast\Ponx.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\SemanticTestMain.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\semantics\SymbolTable.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ast\Giraderecha.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ir\IRTestMain.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\semantics\SemanticError.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ir\IROperand.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ast\Expr.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ir\IRProgram.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\parser\LogoTECBaseListener.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\parser\LogoTECBaseVisitor.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ast\ASTBuilder.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ir\IRConst.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ast\Ponpos.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ast\Ejecuta.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ast\Retrocede.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\parser\LogoTECListener.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ast\VariableExpr.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\semantics\ErrorReporter.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ast\Stmt.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\parser\LogoTECVisitor.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ast\Haz_mientras.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ast\Giraizquierda.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ast\ExpressionStmt.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ast\ProcDeclStmt.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ast\Haz_hasta.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\semantics\SemanticAnalyzer.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ast\Program.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ast\Repite.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ast\Haz.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\parser\LogoTECParser.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ast\Centro.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ast\Inc.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ast\Ponrumbo.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ast\Mientras.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\semantics\Type.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ir\IRVar.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ast\Si.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ast\INIC.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ui\IDLE_LogoTEC.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ast\Node.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\Launcher.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ast\Ponxy.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ast\Avanza.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\parser\LogoTECLexer.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ui\IDLE_Controller.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ast\LiteralExpr.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ast\VarDeclStmt.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ast\Pony.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ir\IRInstr.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ir\IRTemp.java
-C:\Users\aliss\OneDrive\Documentos\GitHub\LogoTEC\src\main\java\com\logotec\ast\ASTVisitor.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/parser/LogoTECParser.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ast/Ejecuta.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ir/IRInstr.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ir/IRProgram.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ui/IDLE_LogoTEC.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ast/Inic.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/semantics/SemanticAnalyzer.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ast/Centro.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ast/VarDeclStmt.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/parser/LogoTECVisitor.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ast/ASTBuilder.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ast/Repite.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ast/Haz_mientras.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/semantics/Type.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ast/Avanza.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ir/IROptimizer.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ast/Ponrumbo.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ast/Giraizquierda.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ir/ASTToIRVisitor.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/CompiladorLLVM.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ast/Stmt.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ui/IDLE_Controller.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/semantics/SymbolTable.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ast/BinaryExpr.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ast/LiteralExpr.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ast/ASTVisitor.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ir/IRTemp.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ast/Program.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/semantics/SemanticError.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ast/ExpressionStmt.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ir/IRConst.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ast/Giraderecha.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/parser/LogoTECBaseListener.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ast/Haz.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ast/Expr.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ir/IRTestMain.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ast/Node.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/parser/LogoTECListener.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ast/Mientras.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ast/Si.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ir/IRToLLVMEmitter.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/SemanticTestMain.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ast/Hasta.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ast/Ponx.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ir/IROperand.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ast/VariableExpr.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ast/Inc.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ast/ProcDeclStmt.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ast/Haz_hasta.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ir/IRVar.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/runtime/logoRuntime.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ast/Ponpos.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ast/Pony.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ast/Retrocede.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/ast/Ponxy.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/parser/LogoTECLexer.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/Launcher.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/parser/LogoTECBaseVisitor.java
+/home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/main/java/com/logotec/semantics/ErrorReporter.java

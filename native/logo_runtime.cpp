@@ -31,16 +31,6 @@ void logo_reset() {
 // ============================================
 // Instrucciones básicas
 // ============================================
-void logo_haz(const char* var_name, double value) {
-    // TODO: Implementar lógica de asignación de variable
-    std::printf("HAZ %s %.6f\n", var_name, value);
-}
-
-void logo_inic(const char* var_name, double value) {
-    // TODO: Implementar lógica de inicialización de variable
-    std::printf("INIC %s %.6f\n", var_name, value);
-}
-
 void logo_inc(double value1, double value2) {
     // TODO: Implementar lógica de incremento
     std::printf("INC %.6f %.6f\n", value1, value2);
