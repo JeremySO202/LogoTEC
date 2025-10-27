@@ -284,7 +284,7 @@ public class IDLE_Controller implements Initializable {
      */
     @FXML
     public void execute(ActionEvent actionEvent) {
-        System.out.println("🚀 Ejecutando programa compilado...");
+        System.out.println("Ejecutando programa compilado...");
 
         try {
             String workingDir = System.getProperty("user.dir");
@@ -293,12 +293,12 @@ public class IDLE_Controller implements Initializable {
 
             if (!executable.exists()) {
                 System.err.println("❌ No se encontró el ejecutable. Debe compilar primero.");
-                System.err.println("📍 Buscando en: " + executable.getAbsolutePath());
+                System.err.println("Buscando en: " + executable.getAbsolutePath());
                 return;
             }
 
             if (!executable.canExecute()) {
-                System.err.println("⚠️ El archivo no tiene permisos de ejecución, otorgando...");
+                System.err.println("El archivo no tiene permisos de ejecución, otorgando...");
                 ProcessBuilder chmodPb = new ProcessBuilder("chmod", "+x", executable.getAbsolutePath());
                 chmodPb.start().waitFor();
             }
@@ -311,12 +311,12 @@ public class IDLE_Controller implements Initializable {
             pb.directory(new File(srcDir));
             pb.redirectErrorStream(true);
 
-            System.out.println("🎯 Ejecutando: " + executable.getAbsolutePath());
+            System.out.println("Ejecutando: " + executable.getAbsolutePath());
             Process process = pb.start();
 
             // Leer e interpretar la salida del programa
             Scanner scanner = new Scanner(process.getInputStream());
-            System.out.println("📄 Procesando comandos de dibujo:");
+            System.out.println("Procesando comandos de dibujo:");
             System.out.println("=" .repeat(40));
 
             while (scanner.hasNextLine()) {
@@ -329,13 +329,13 @@ public class IDLE_Controller implements Initializable {
             int exitCode = process.waitFor();
             System.out.println("=" .repeat(40));
             if (exitCode == 0) {
-                System.out.println("✅ Programa ejecutado exitosamente");
+                System.out.println("Programa ejecutado exitosamente");
             } else {
-                System.err.println("❌ Programa terminó con código de error: " + exitCode);
+                System.err.println("Programa terminó con código de error: " + exitCode);
             }
 
         } catch (Exception e) {
-            System.err.println("💥 Error ejecutando el programa: " + e.getMessage());
+            System.err.println("Error ejecutando el programa: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -349,19 +349,34 @@ public class IDLE_Controller implements Initializable {
         GraphicsContext gc = canvas.getGraphicsContext2D();
         String[] parts = command.trim().split("\\s+");
 
+        // Obtener centro del canvas para transformación de coordenadas
+        double centerX = canvas.getWidth() / 2;
+        double centerY = canvas.getHeight() / 2;
+
         try {
             switch (parts[0]) {
                 case "RESET":
                     clearCanvas();
+                    // Configurar estilo inicial
+                    gc.setStroke(Color.BLACK);
+                    gc.setLineWidth(2.0);
                     break;
 
                 case "LINE":
                     if (parts.length >= 5) {
-                        double x1 = Double.parseDouble(parts[1]);
-                        double y1 = Double.parseDouble(parts[2]);
-                        double x2 = Double.parseDouble(parts[3]);
-                        double y2 = Double.parseDouble(parts[4]);
-                        gc.strokeLine(x1, y1, x2, y2);
+                        // Coordenadas Logo (origen en centro, Y+ hacia arriba)
+                        double logoX1 = Double.parseDouble(parts[1]);
+                        double logoY1 = Double.parseDouble(parts[2]);
+                        double logoX2 = Double.parseDouble(parts[3]);
+                        double logoY2 = Double.parseDouble(parts[4]);
+
+                        // Transformar a coordenadas Canvas (origen arriba-izquierda, Y+ hacia abajo)
+                        double canvasX1 = centerX + logoX1;
+                        double canvasY1 = centerY - logoY1;  // Invertir Y
+                        double canvasX2 = centerX + logoX2;
+                        double canvasY2 = centerY - logoY2;  // Invertir Y
+
+                        gc.strokeLine(canvasX1, canvasY1, canvasX2, canvasY2);
                     }
                     break;
 
@@ -392,6 +407,12 @@ public class IDLE_Controller implements Initializable {
                                 break;
                             case "ROJO":
                                 gc.setStroke(Color.RED);
+                                break;
+                            case "VERDE":
+                                gc.setStroke(Color.GREEN);
+                                break;
+                            case "AMARILLO":
+                                gc.setStroke(Color.YELLOW);
                                 break;
                         }
                     }

@@ -10,7 +10,7 @@ program: (estructura_comentario) (procedimientos | ordenes)* EOF;
 // ----------------------------------------
 // Estructura de comentarios
 // ----------------------------------------
-estructura_comentario: '//' ESPACIO* BRACKET_OPEN (ID | NUMERO | ESPACIO)* GUION (ID | NUMERO | ESPACIO)* BRACKET_CLOSE SALTO_LINEA;
+estructura_comentario: '//' ESPACIO* BRACKET_OPEN (ID | NUMERO | ESPACIO)* '-' (ID | NUMERO | ESPACIO)* BRACKET_CLOSE SALTO_LINEA;
 
 comentario: '//' (ID | DIGITO | ESPACIO)* SALTO_LINEA+;
 
@@ -253,15 +253,15 @@ BRACKET_OPEN: '{' ;
 BRACKET_CLOSE: '}' ;
 PAR_OPEN: '(' ;
 PAR_CLOSE: ')' ;
-GUION: '-' ;
+// GUION: '-' ;  // Comentado: el signo - ahora es parte de NUMERO
 COMILLA: '"' ;
 
 // ----------------------------------------
 // Identificadores y literales
 // ----------------------------------------
-STRING: COMILLA (LETRAS | NUMERO | GUION_BAJO)+ COMILLA ;
-ID: (LETRAS | GUION_BAJO) (LETRAS | GUION_BAJO | NUMERO)* ;
-NUMERO: DIGITO+ ;
+STRING: COMILLA (LETRAS | [0-9]+ | GUION_BAJO)+ COMILLA ;
+ID: (LETRAS | GUION_BAJO) (LETRAS | GUION_BAJO | [0-9])* ;
+NUMERO: '-'? [0-9]+ ('.' [0-9]+)? ;
 
 // ----------------------------------------
 // Componentes básicos

@@ -1,11 +1,5 @@
 // {Pruebas basicas - LogoTEC}
 
-// Procedimiento simple
-PARA test_basico []
-AVANZA 60;
-GIRADERECHA 90;
-FIN
-
 // Variables y operaciones basicas
 INIC x = 10;
 INIC y = 20;

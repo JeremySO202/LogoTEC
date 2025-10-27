@@ -1,4 +1,4 @@
-// Generated from C:/Users/menei/Documents/GitHub/LogoTEC/LogoTEC.g4 by ANTLR 4.13.2
+// Generated from /home/jeremy/Semestre/Compiladores/Proyecto LogoTEC/LogoTEC/src/LogoTEC.g4 by ANTLR 4.13.2
 package com.logotec.parser;
 
 import org.antlr.v4.runtime.ParserRuleContext;

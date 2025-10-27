@@ -276,20 +276,34 @@ public class ASTBuilder extends LogoTECBaseVisitor<Node> {
     @Override
     public Node visitNumeric_val(LogoTECParser.Numeric_valContext ctx) {
         Token t = ctx.getStart();
+
+        // Obtener el texto completo para detectar números negativos
+        String fullText = ctx.getText();
+
         if (ctx.NUMERO() != null) {
-            String txt = ctx.NUMERO().getText();
-            try { double v = Double.parseDouble(txt); return new LiteralExpr(v, t.getLine(), t.getCharPositionInLine()); }
-            catch (NumberFormatException ex) { return new LiteralExpr(txt, t.getLine(), t.getCharPositionInLine()); }
+            String txt = fullText;  // Usa el texto completo que incluye el signo -
+            try {
+                double v = Double.parseDouble(txt);
+                return new LiteralExpr(v, t.getLine(), t.getCharPositionInLine());
+            }
+            catch (NumberFormatException ex) {
+                return new LiteralExpr(txt, t.getLine(), t.getCharPositionInLine());
+            }
         }
         if (ctx.DIGITO() != null) {
-            String txt = ctx.DIGITO().getText();
-            try { double v = Double.parseDouble(txt); return new LiteralExpr(v, t.getLine(), t.getCharPositionInLine()); }
-            catch (NumberFormatException ex) { return new LiteralExpr(txt, t.getLine(), t.getCharPositionInLine()); }
+            String txt = fullText;  // Usa el texto completo que incluye el signo -
+            try {
+                double v = Double.parseDouble(txt);
+                return new LiteralExpr(v, t.getLine(), t.getCharPositionInLine());
+            }
+            catch (NumberFormatException ex) {
+                return new LiteralExpr(txt, t.getLine(), t.getCharPositionInLine());
+            }
         }
         if (ctx.ID() != null) return new VariableExpr(ctx.ID().getText(), t.getLine(), t.getCharPositionInLine());
-        if (ctx.operacion() != null) return (Expr) visit(ctx.operacion());
+        if (ctx.operacion() != null) return visit(ctx.operacion());
         if (ctx.rumbo() != null) return new VariableExpr(ctx.rumbo().getText(), t.getLine(), t.getCharPositionInLine());
-        if (ctx.PAR_OPEN() != null && ctx.operacion() != null) return (Expr) visit(ctx.operacion());
+        if (ctx.PAR_OPEN() != null && ctx.operacion() != null) return visit(ctx.operacion());
         return null;
     }
 
