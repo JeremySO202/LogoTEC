@@ -1,0 +1,41 @@
+// {Espiral de Cuadrados Rotados - Ajustado para canvas 914x605}
+PONXY 0 0;
+PONRUMBO 0;
+PONCOLORLAPIZ ROJO;
+
+INIC tam = 20;
+INIC rotacion = 0;
+INIC mitad = 0;
+
+BAJALAPIZ;
+
+REPITE 80 [
+    HAZ mitad (DIVISION tam 2);
+
+    // Retroceder a la mitad para centrar el cuadrado
+    RETROCEDE mitad;
+    GIRADERECHA 90;
+    RETROCEDE mitad;
+    GIRAIZQUIERDA 90;
+
+    // Dibujar cuadrado
+    REPITE 4 [
+        AV tam;
+        GIRADERECHA 90;
+    ];
+
+    // Volver al centro
+    SUBELAPIZ;
+    PONXY 0 0;
+    BAJALAPIZ;
+
+    // Rotar para siguiente cuadrado
+    HAZ rotacion (SUMA rotacion 3);
+    PONRUMBO rotacion;
+
+    // Aumentar tamaño gradualmente
+    HAZ tam (SUMA tam 3);
+];
+
+SUBELAPIZ;
+OCULTATORTUGA;

@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Run LogoTEC" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.logotec.ui.Launcher" />
+    <module name="logotec" />
+    <option name="VM_PARAMETERS" value="--module-path $MAVEN_REPOSITORY$/org/openjfx --add-modules javafx.controls,javafx.fxml" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

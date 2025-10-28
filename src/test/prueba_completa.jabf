@@ -1,157 +1,205 @@
-// {Prueba completa - Todas las instrucciones LogoTEC}
-
-// Procedimiento con parametros
-PARA dibujar_cuadrado [lado]
-AVANZA lado;
-GIRADERECHA 90;
-AVANZA lado;
-GIRADERECHA 90;
-AVANZA lado;
-GIRADERECHA 90;
-AVANZA lado;
-GIRADERECHA 90;
-FIN
-
-// Procedimiento sin parametros
-
-PARA configuracion_inicial []
+// {Mandala Geometrico Artistico - Ajustado para canvas 516x354}
 CENTRO;
-BAJALAPIZ;
-PONCOLORLAPIZ ROJO;
 PONRUMBO 0;
-FIN
+PONCOLORLAPIZ AZUL;
 
-// Procedimiento para operaciones matematicas
+INIC radio = 60;
+INIC petalos = 12;
+INIC angulo_petalo = 0;
 
-PARA test_matematicas []
-INIC num1 = 10;
-INIC num2 = 5;
-INIC resultado_suma = SUMA num1 num2 15;
-INIC resultado_producto = PRODUCTO num1 num2;
-INIC resultado_division = DIVISION num1 num2;
-INIC resultado_potencia = POTENCIA num1 num2;
-INIC resultado_diferencia = DIFERENCIA num1 num2;
-INIC numero_random = AZAR 100;
-FIN
+HAZ angulo_petalo (DIVISION 360 petalos);
 
-// Procedimiento para operaciones logicas y comparativas
-PARA test_logica []
-INIC x = 20;
-INIC y = 15;
-INIC es_mayor = MAYORQUE? x y;
-INIC es_menor = MENORQUE? x y;
-INIC son_iguales = IGUALES? x y;
-INIC operacion_y = Y TRUE FALSE;
-INIC operacion_o = O TRUE FALSE;
-FIN
+REPITE petalos [
+    BAJALAPIZ;
+    REPITE 2 [
+        AVANZA radio;
+        GIRADERECHA 60;
+        AVANZA radio;
+        GIRADERECHA 120;
+    ];
+    SUBELAPIZ;
+    CENTRO;
+    GIRADERECHA angulo_petalo;
+];
 
-// Inicializacion de variables globales
-INIC lado_cuadrado = 50;
-INIC contador = 0;
-INIC activo = TRUE;
-INIC color_actual = "AZUL";
+CENTRO;
+PONRUMBO 0;
+PONCOLORLAPIZ ROJO;
 
-// Configuracion inicial
-HAZ configuracion_inicial 10;
+INIC tam_estrella = 50;
+REPITE 8 [
+    BAJALAPIZ;
+    REPITE 5 [
+        AVANZA tam_estrella;
+        GIRADERECHA 144;
+    ];
+    SUBELAPIZ;
+    CENTRO;
+    GIRADERECHA 45;
+];
 
-// Instrucciones basicas de movimiento
-AVANZA 100;
-RETROCEDE 50;
-GIRADERECHA 45;
+CENTRO;
+PONRUMBO 0;
+PONCOLORLAPIZ NEGRO;
+
+INIC radio_circulo = 75;
+INIC lados_poligono = 36;
+INIC lado_aproximado = 0;
+
+HAZ lado_aproximado (DIVISION (PRODUCTO radio_circulo 6) lados_poligono);
+
+BAJALAPIZ;
+REPITE lados_poligono [
+    AVANZA lado_aproximado;
+    GIRADERECHA (DIVISION 360 lados_poligono);
+];
+SUBELAPIZ;
+
+CENTRO;
+PONRUMBO 0;
+PONCOLORLAPIZ AZUL;
+
+INIC tam_espiral = 3;
+INIC iteraciones_espiral = 0;
+
+BAJALAPIZ;
+REPITE 50 [
+    AVANZA tam_espiral;
+    GIRADERECHA 89;
+    HAZ tam_espiral (SUMA tam_espiral 1.5);
+];
+SUBELAPIZ;
+
+CENTRO;
+PONRUMBO 0;
+
+INIC dist_cuadrados = 25;
+INIC num_cuadrados = 5;
+INIC i = 0;
+
+REPITE num_cuadrados [
+    PONCOLORLAPIZ ROJO;
+    SI (IGUALES? (PRODUCTO 2 (DIVISION i 2)) i) [
+        PONCOLORLAPIZ AZUL;
+    ];
+    BAJALAPIZ;
+    REPITE 4 [
+        AVANZA dist_cuadrados;
+        GIRADERECHA 90;
+    ];
+    SUBELAPIZ;
+    HAZ dist_cuadrados (SUMA dist_cuadrados 12);
+    INC [i 1];
+];
+
+CENTRO;
+PONXY 120 90;
+PONCOLORLAPIZ NEGRO;
+
+INIC zig_tam = 20;
+INIC zig_count = 0;
+
+BAJALAPIZ;
+REPITE 6 [
+    AVANZA zig_tam;
+    GIRADERECHA 90;
+    AVANZA zig_tam;
+    GIRAIZQUIERDA 90;
+];
+SUBELAPIZ;
+
+CENTRO;
+PONXY -120 90;
+PONRUMBO 0;
+PONCOLORLAPIZ ROJO;
+
+INIC rosa_tam = 40;
+BAJALAPIZ;
+REPITE 18 [
+    REPITE 2 [
+        AVANZA rosa_tam;
+        GIRADERECHA 45;
+        AVANZA rosa_tam;
+        GIRADERECHA 135;
+    ];
+    GIRADERECHA 20;
+];
+SUBELAPIZ;
+
+CENTRO;
+PONXY 120 -90;
+PONCOLORLAPIZ AZUL;
+
+INIC hex_tam = 15;
+INIC hex_capas = 0;
+
+REPITE 4 [
+    BAJALAPIZ;
+    REPITE 6 [
+        AVANZA hex_tam;
+        GIRADERECHA 60;
+    ];
+    SUBELAPIZ;
+    HAZ hex_tam (SUMA hex_tam 10);
+    GIRADERECHA 30;
+];
+
+CENTRO;
+PONXY -120 -90;
+PONCOLORLAPIZ NEGRO;
+
+INIC trian_tam = 50;
+BAJALAPIZ;
+REPITE 3 [
+    AVANZA trian_tam;
+    GIRADERECHA 120;
+];
+SUBELAPIZ;
+
+AVANZA (DIVISION trian_tam 2);
+GIRADERECHA 90;
+AVANZA (DIVISION trian_tam 4);
 GIRAIZQUIERDA 90;
 
-// Control de posicion
-PONPOS [100 150];
-PONXY 200 250;
-PONX 300;
-PONY 400;
-PONRUMBO 180;
-
-// Control del lapiz
-SUBELAPIZ;
-AVANZA 30;
 BAJALAPIZ;
-PONCOLORLAPIZ NEGRO;
-
-// Operaciones con variables
-INIC nueva_var = 25;
-HAZ test_matematicas 20;
-HAZ test_logica 30;
-
-// Incremento
-INC [contador 1];
-INC [contador];
-
-// Condicional simple
-SI (IGUALES? contador 1) [
-PONCOLORLAPIZ AZUL;
-AVANZA 75;
+REPITE 3 [
+    AVANZA (DIVISION trian_tam 2);
+    GIRADERECHA 120;
 ];
+SUBELAPIZ;
 
-// Condicional con else
-SI (MAYORQUE? lado_cuadrado 40) [
-HAZ dibujar_cuadrado lado_cuadrado;
-GIRADERECHA 30;
-] [
 CENTRO;
+PONRUMBO 0;
 PONCOLORLAPIZ ROJO;
+
+INIC radio_rayo = 90;
+BAJALAPIZ;
+REPITE 16 [
+    AVANZA radio_rayo;
+    RETROCEDE radio_rayo;
+    GIRADERECHA (DIVISION 360 16);
 ];
+SUBELAPIZ;
 
-// Repeticion basica
-REPITE 6 [
-AVANZA 40;
-GIRADERECHA 60;
-];
-
-// Bucle mientras
-MIENTRAS (MENORQUE? contador 5) [
-AVANZA 20;
-INC [contador 1];
-GIRADERECHA 45;
-];
-
-// Reset contador para siguiente prueba
-INIC contador = 0;
-
-// Bucle hazhasta
-HAZ.HASTA [
-RETROCEDE 15;
-INC [contador 1];
-GIRADERECHA 30;
-] (MAYORQUE? contador 3);
-
-// Bucle hasta
-HASTA (IGUALES? contador 8) [
-AVANZA 10;
-INC [contador 1];
-];
-
-// Reset contador
-INIC contador = 0;
-
-// Bucle haz mientras
-HAZ.MIENTRAS [
+CENTRO;
+PONRUMBO 45;
 PONCOLORLAPIZ AZUL;
-AVANZA 25;
-GIRADERECHA 72;
-INC [contador 1];
-] (MENORQUE? contador 5);
 
-// Ejecucion de bloque de codigo
-EJECUTA [
-PONPOS [0 0];
-CENTRO;
-PONCOLORLAPIZ NEGRO;
-AVANZA 80;
+INIC ondas = 0;
+INIC onda_tam = 15;
+
+BAJALAPIZ;
+REPITE 15 [
+    AVANZA onda_tam;
+    GIRADERECHA 30;
+    AVANZA onda_tam;
+    GIRAIZQUIERDA 60;
+    AVANZA onda_tam;
+    GIRADERECHA 30;
 ];
+SUBELAPIZ;
 
-// Espera
-ESPERA 1000;
-
-// Llamadas a procedimientos con parametros
-HAZ dibujar_cuadrado 60;
-HAZ dibujar_cuadrado 80;
-
-// Instrucciones finales
-OCULTATORTUGA;
 CENTRO;
+SUBELAPIZ;
+ESPERA 2000;
+OCULTATORTUGA;

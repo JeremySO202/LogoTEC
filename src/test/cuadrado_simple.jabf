@@ -1,0 +1,5 @@
+// {Prueba cuadrado - Dibujo de cuadrado}
+REPITE 4 [
+AV 100;  
+GIRADERECHA 90;
+];
