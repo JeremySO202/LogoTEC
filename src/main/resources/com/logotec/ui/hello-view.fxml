@@ -10,12 +10,12 @@
    <children>
       <AnchorPane layoutX="14.0" layoutY="10.0" prefHeight="826.0" prefWidth="1174.0" style="-fx-background-color: #112415;">
          <children>
-            <TextArea fx:id="codeArea" layoutX="945.0" layoutY="49.0" prefHeight="727.0" prefWidth="218.0" />
-            <AnchorPane prefHeight="36.0" prefWidth="1174.0" style="-fx-background-color: #1c3321;">
+            <TextArea fx:id="codeArea" layoutX="945.0" layoutY="49.0" prefHeight="721.0" prefWidth="218.0" />
+            <AnchorPane prefHeight="43.0" prefWidth="1174.0" style="-fx-background-color: #1c3321;">
                <children>
-                  <Button layoutX="8.0" layoutY="5.0" mnemonicParsing="false" onAction="#openFile" prefHeight="14.0" prefWidth="39.0" style="-fx-background-color: #4a6350;" text="File" textFill="WHITE" />
-                  <Button layoutX="1096.0" layoutY="5.0" mnemonicParsing="false" onAction="#execute" prefHeight="26.0" prefWidth="64.0" style="-fx-background-color: #4a6350;" text="Execute" textFill="WHITE" />
-                  <Button layoutX="1020.0" layoutY="4.0" mnemonicParsing="false" onAction="#compile" prefHeight="26.0" prefWidth="64.0" style="-fx-background-color: #4a6350;" text="Compile" textFill="WHITE" />
+                  <Button layoutX="1064.0" layoutY="8.0" mnemonicParsing="false" onAction="#execute" prefHeight="26.0" prefWidth="95.0" style="-fx-background-color: #4a6350;" text="Execute" textFill="WHITE" />
+                  <Button layoutX="949.0" layoutY="8.0" mnemonicParsing="false" onAction="#compile" prefHeight="26.0" prefWidth="95.0" style="-fx-background-color: #4a6350;" text="Compile" textFill="WHITE" />
+                  <Button layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#openFile" prefHeight="26.0" prefWidth="76.0" style="-fx-background-color: #4a6350;" text="File" textFill="WHITE" />
                </children>
             </AnchorPane>
             <ScrollPane fx:id="errorPanel" layoutX="12.0" layoutY="676.0" prefHeight="136.0" prefWidth="922.0">
@@ -23,10 +23,10 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
               </content>
             </ScrollPane>
-            <AnchorPane layoutX="945.0" layoutY="776.0" prefHeight="36.0" prefWidth="218.0" style="-fx-background-color: #1c3321;">
+            <AnchorPane layoutX="945.0" layoutY="769.0" prefHeight="43.0" prefWidth="218.0" style="-fx-background-color: #1c3321;">
                <children>
-                  <Button layoutX="36.0" layoutY="4.0" mnemonicParsing="false" onAction="#editDone" prefHeight="26.0" prefWidth="64.0" style="-fx-background-color: #4a6350;" text="done" textFill="WHITE" />
-                  <Button layoutX="129.0" layoutY="4.0" mnemonicParsing="false" onAction="#erase" prefHeight="26.0" prefWidth="64.0" style="-fx-background-color: #4a6350;" text="erase" textFill="WHITE" />
+                  <Button layoutX="35.0" layoutY="8.0" mnemonicParsing="false" onAction="#editDone" prefHeight="26.0" prefWidth="64.0" style="-fx-background-color: #4a6350;" text="done" textFill="WHITE" />
+                  <Button layoutX="126.0" layoutY="8.0" mnemonicParsing="false" onAction="#erase" prefHeight="26.0" prefWidth="64.0" style="-fx-background-color: #4a6350;" text="erase" textFill="WHITE" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="12.0" layoutY="50.0" prefHeight="368.0" prefWidth="534.0" style="-fx-background-color: white;">
