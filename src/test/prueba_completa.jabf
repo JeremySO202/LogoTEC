@@ -1,9 +1,9 @@
-// {Mandala Geometrico Artistico - Test}
+// {Mandala Geometrico Artistico - Ajustado para canvas 516x354}
 CENTRO;
 PONRUMBO 0;
 PONCOLORLAPIZ AZUL;
 
-INIC radio = 100;
+INIC radio = 60;
 INIC petalos = 12;
 INIC angulo_petalo = 0;
 
@@ -26,7 +26,7 @@ CENTRO;
 PONRUMBO 0;
 PONCOLORLAPIZ ROJO;
 
-INIC tam_estrella = 80;
+INIC tam_estrella = 50;
 REPITE 8 [
     BAJALAPIZ;
     REPITE 5 [
@@ -42,7 +42,7 @@ CENTRO;
 PONRUMBO 0;
 PONCOLORLAPIZ NEGRO;
 
-INIC radio_circulo = 120;
+INIC radio_circulo = 75;
 INIC lados_poligono = 36;
 INIC lado_aproximado = 0;
 
@@ -59,21 +59,21 @@ CENTRO;
 PONRUMBO 0;
 PONCOLORLAPIZ AZUL;
 
-INIC tam_espiral = 5;
+INIC tam_espiral = 3;
 INIC iteraciones_espiral = 0;
 
 BAJALAPIZ;
-REPITE 60 [
+REPITE 50 [
     AVANZA tam_espiral;
     GIRADERECHA 89;
-    HAZ tam_espiral (SUMA tam_espiral 2);
+    HAZ tam_espiral (SUMA tam_espiral 1.5);
 ];
 SUBELAPIZ;
 
 CENTRO;
 PONRUMBO 0;
 
-INIC dist_cuadrados = 40;
+INIC dist_cuadrados = 25;
 INIC num_cuadrados = 5;
 INIC i = 0;
 
@@ -88,19 +88,19 @@ REPITE num_cuadrados [
         GIRADERECHA 90;
     ];
     SUBELAPIZ;
-    HAZ dist_cuadrados (SUMA dist_cuadrados 20);
+    HAZ dist_cuadrados (SUMA dist_cuadrados 12);
     INC [i 1];
 ];
 
 CENTRO;
-PONXY 150 150;
+PONXY 120 90;
 PONCOLORLAPIZ NEGRO;
 
-INIC zig_tam = 30;
+INIC zig_tam = 20;
 INIC zig_count = 0;
 
 BAJALAPIZ;
-REPITE 8 [
+REPITE 6 [
     AVANZA zig_tam;
     GIRADERECHA 90;
     AVANZA zig_tam;
@@ -109,11 +109,11 @@ REPITE 8 [
 SUBELAPIZ;
 
 CENTRO;
-PONXY -150 150;
+PONXY -120 90;
 PONRUMBO 0;
 PONCOLORLAPIZ ROJO;
 
-INIC rosa_tam = 60;
+INIC rosa_tam = 40;
 BAJALAPIZ;
 REPITE 18 [
     REPITE 2 [
@@ -127,10 +127,10 @@ REPITE 18 [
 SUBELAPIZ;
 
 CENTRO;
-PONXY 150 -150;
+PONXY 120 -90;
 PONCOLORLAPIZ AZUL;
 
-INIC hex_tam = 25;
+INIC hex_tam = 15;
 INIC hex_capas = 0;
 
 REPITE 4 [
@@ -140,15 +140,15 @@ REPITE 4 [
         GIRADERECHA 60;
     ];
     SUBELAPIZ;
-    HAZ hex_tam (SUMA hex_tam 15);
+    HAZ hex_tam (SUMA hex_tam 10);
     GIRADERECHA 30;
 ];
 
 CENTRO;
-PONXY -150 -150;
+PONXY -120 -90;
 PONCOLORLAPIZ NEGRO;
 
-INIC trian_tam = 80;
+INIC trian_tam = 50;
 BAJALAPIZ;
 REPITE 3 [
     AVANZA trian_tam;
@@ -172,7 +172,7 @@ CENTRO;
 PONRUMBO 0;
 PONCOLORLAPIZ ROJO;
 
-INIC radio_rayo = 140;
+INIC radio_rayo = 90;
 BAJALAPIZ;
 REPITE 16 [
     AVANZA radio_rayo;
@@ -186,10 +186,10 @@ PONRUMBO 45;
 PONCOLORLAPIZ AZUL;
 
 INIC ondas = 0;
-INIC onda_tam = 20;
+INIC onda_tam = 15;
 
 BAJALAPIZ;
-REPITE 20 [
+REPITE 15 [
     AVANZA onda_tam;
     GIRADERECHA 30;
     AVANZA onda_tam;

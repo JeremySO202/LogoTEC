@@ -118,8 +118,8 @@ extern "C" {
 
     void logo_centro() {
         std::lock_guard<std::mutex> lock(s_mutex);
-        s_x = 258.0;
-        s_y = 177.0;
+        s_x = 0;
+        s_y = 0;
         std::printf("POSITION %.6f %.6f\n", s_x, s_y);
     }
 
