@@ -211,7 +211,6 @@ public class ASTBuilder extends LogoTECBaseVisitor<Node> {
         return new Poncolorlapiz(color, t.getLine(), t.getCharPositionInLine());
     }
 
-// Método helper para convertir nombres de color a números
     private int convertirColorANumero(String colorText) {
         switch (colorText.toUpperCase()) {
             case "NEGRO":
