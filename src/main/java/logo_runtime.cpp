@@ -138,7 +138,7 @@ extern "C" {
         std::puts("PENUP");
     }
 
-    void logo_poncolor(int color) {
+    void logo_poncolorlapiz(int color) {
         std::lock_guard<std::mutex> lock(s_mutex);
 
         if (color < 0 || color > 2) {
