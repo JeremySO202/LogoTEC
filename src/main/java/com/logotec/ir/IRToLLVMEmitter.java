@@ -41,8 +41,9 @@ public class IRToLLVMEmitter {
         sb.append("\n");
 
         // Emitir función main
-        sb.append("define i32 @main() {\n");
+        sb.append("define i32 @main(i32 %argc, i8** %argv) {\n");
         sb.append("entry:\n");
+        sb.append("  call void @logo_init_runtime(i32 %argc, i8** %argv)\n");
         sb.append("  call void @logo_reset()\n");
 
         // Buscar el primer LABEL para saltar ahí
@@ -101,6 +102,7 @@ public class IRToLLVMEmitter {
     // Declaraciones de funciones del runtime
     private void emitRuntimeDeclarations(StringBuilder sb) {
         sb.append("; Runtime Logo functions\n");
+        sb.append("declare void @logo_init_runtime(i32, i8**)\n");
         sb.append("declare void @logo_reset()\n");
         sb.append("declare void @logo_avanza(double)\n");
         sb.append("declare void @logo_retrocede(double)\n");
