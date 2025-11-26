@@ -155,14 +155,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_program; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterProgram(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitProgram(this);
-		}
 	}
 
 	public final ProgramContext program() throws RecognitionException {
@@ -238,14 +230,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_estructura_comentario; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterEstructura_comentario(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitEstructura_comentario(this);
-		}
 	}
 
 	public final Estructura_comentarioContext estructura_comentario() throws RecognitionException {
@@ -358,14 +342,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_comentario; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterComentario(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitComentario(this);
-		}
 	}
 
 	public final ComentarioContext comentario() throws RecognitionException {
@@ -449,14 +425,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_procedimientos; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterProcedimientos(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitProcedimientos(this);
-		}
 	}
 
 	public final ProcedimientosContext procedimientos() throws RecognitionException {
@@ -555,14 +523,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_procedimiento; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterProcedimiento(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitProcedimiento(this);
-		}
 	}
 
 	public final ProcedimientoContext procedimiento() throws RecognitionException {
@@ -631,14 +591,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_parametros; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterParametros(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitParametros(this);
-		}
 	}
 
 	public final ParametrosContext parametros() throws RecognitionException {
@@ -730,14 +682,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_ordenes; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterOrdenes(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitOrdenes(this);
-		}
 	}
 
 	public final OrdenesContext ordenes() throws RecognitionException {
@@ -797,14 +741,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_orden; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterOrden(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitOrden(this);
-		}
 	}
 
 	public final OrdenContext orden() throws RecognitionException {
@@ -976,14 +912,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_instruccion; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterInstruccion(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitInstruccion(this);
-		}
 	}
 
 	public final InstruccionContext instruccion() throws RecognitionException {
@@ -1210,14 +1138,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_haz; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterHaz(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitHaz(this);
-		}
 	}
 
 	public final HazContext haz() throws RecognitionException {
@@ -1308,14 +1228,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_inic; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterInic(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitInic(this);
-		}
 	}
 
 	public final InicContext inic() throws RecognitionException {
@@ -1399,14 +1311,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_inc; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterInc(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitInc(this);
-		}
 	}
 
 	public final IncContext inc() throws RecognitionException {
@@ -1465,14 +1369,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_avanza; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterAvanza(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitAvanza(this);
-		}
 	}
 
 	public final AvanzaContext avanza() throws RecognitionException {
@@ -1514,14 +1410,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_retrocede; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterRetrocede(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitRetrocede(this);
-		}
 	}
 
 	public final RetrocedeContext retrocede() throws RecognitionException {
@@ -1563,14 +1451,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_giraderecha; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterGiraderecha(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitGiraderecha(this);
-		}
 	}
 
 	public final GiraderechaContext giraderecha() throws RecognitionException {
@@ -1612,14 +1492,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_giraizquierda; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterGiraizquierda(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitGiraizquierda(this);
-		}
 	}
 
 	public final GiraizquierdaContext giraizquierda() throws RecognitionException {
@@ -1669,14 +1541,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_ponpos; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterPonpos(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitPonpos(this);
-		}
 	}
 
 	public final PonposContext ponpos() throws RecognitionException {
@@ -1732,14 +1596,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_ponxy; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterPonxy(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitPonxy(this);
-		}
 	}
 
 	public final PonxyContext ponxy() throws RecognitionException {
@@ -1785,14 +1641,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_ponrumbo; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterPonrumbo(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitPonrumbo(this);
-		}
 	}
 
 	public final PonrumboContext ponrumbo() throws RecognitionException {
@@ -1834,14 +1682,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_ponx; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterPonx(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitPonx(this);
-		}
 	}
 
 	public final PonxContext ponx() throws RecognitionException {
@@ -1883,14 +1723,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_pony; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterPony(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitPony(this);
-		}
 	}
 
 	public final PonyContext pony() throws RecognitionException {
@@ -1928,14 +1760,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_centro; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterCentro(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitCentro(this);
-		}
 	}
 
 	public final CentroContext centro() throws RecognitionException {
@@ -1969,14 +1793,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_bajalapiz; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterBajalapiz(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitBajalapiz(this);
-		}
 	}
 
 	public final BajalapizContext bajalapiz() throws RecognitionException {
@@ -2010,14 +1826,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_subelapiz; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterSubelapiz(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitSubelapiz(this);
-		}
 	}
 
 	public final SubelapizContext subelapiz() throws RecognitionException {
@@ -2053,14 +1861,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_poncolor; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterPoncolor(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitPoncolor(this);
-		}
 	}
 
 	public final PoncolorContext poncolor() throws RecognitionException {
@@ -2098,14 +1898,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_ocultatortuga; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterOcultatortuga(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitOcultatortuga(this);
-		}
 	}
 
 	public final OcultatortugaContext ocultatortuga() throws RecognitionException {
@@ -2143,14 +1935,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_espera; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterEspera(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitEspera(this);
-		}
 	}
 
 	public final EsperaContext espera() throws RecognitionException {
@@ -2194,14 +1978,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_ejecuta; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterEjecuta(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitEjecuta(this);
-		}
 	}
 
 	public final EjecutaContext ejecuta() throws RecognitionException {
@@ -2255,14 +2031,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_repite; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterRepite(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitRepite(this);
-		}
 	}
 
 	public final RepiteContext repite() throws RecognitionException {
@@ -2331,14 +2099,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_si; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterSi(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitSi(this);
-		}
 	}
 
 	public final SiContext si() throws RecognitionException {
@@ -2419,14 +2179,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_haz_hasta; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterHaz_hasta(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitHaz_hasta(this);
-		}
 	}
 
 	public final Haz_hastaContext haz_hasta() throws RecognitionException {
@@ -2490,14 +2242,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_hasta; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterHasta(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitHasta(this);
-		}
 	}
 
 	public final HastaContext hasta() throws RecognitionException {
@@ -2561,14 +2305,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_haz_mientras; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterHaz_mientras(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitHaz_mientras(this);
-		}
 	}
 
 	public final Haz_mientrasContext haz_mientras() throws RecognitionException {
@@ -2632,14 +2368,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_mientras; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterMientras(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitMientras(this);
-		}
 	}
 
 	public final MientrasContext mientras() throws RecognitionException {
@@ -2693,14 +2421,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_op_logica; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterOp_logica(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitOp_logica(this);
-		}
 	}
 
 	public final Op_logicaContext op_logica() throws RecognitionException {
@@ -2756,14 +2476,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_y; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterY(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitY(this);
-		}
 	}
 
 	public final YContext y() throws RecognitionException {
@@ -2812,14 +2524,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_o; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterO(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitO(this);
-		}
 	}
 
 	public final OContext o() throws RecognitionException {
@@ -2865,14 +2569,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_boolean_val; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterBoolean_val(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitBoolean_val(this);
-		}
 	}
 
 	public final Boolean_valContext boolean_val() throws RecognitionException {
@@ -2943,14 +2639,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_op_comparativa; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterOp_comparativa(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitOp_comparativa(this);
-		}
 	}
 
 	public final Op_comparativaContext op_comparativa() throws RecognitionException {
@@ -3013,14 +2701,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_iguales; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterIguales(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitIguales(this);
-		}
 	}
 
 	public final IgualesContext iguales() throws RecognitionException {
@@ -3069,14 +2749,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_mayorque; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterMayorque(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitMayorque(this);
-		}
 	}
 
 	public final MayorqueContext mayorque() throws RecognitionException {
@@ -3125,14 +2797,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_menorque; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterMenorque(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitMenorque(this);
-		}
 	}
 
 	public final MenorqueContext menorque() throws RecognitionException {
@@ -3173,14 +2837,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_operacion; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterOperacion(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitOperacion(this);
-		}
 	}
 
 	public final OperacionContext operacion() throws RecognitionException {
@@ -3228,14 +2884,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_op_algebraicas; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterOp_algebraicas(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitOp_algebraicas(this);
-		}
 	}
 
 	public final Op_algebraicasContext op_algebraicas() throws RecognitionException {
@@ -3319,14 +2967,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_numeric_val; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterNumeric_val(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitNumeric_val(this);
-		}
 	}
 
 	public final Numeric_valContext numeric_val() throws RecognitionException {
@@ -3407,14 +3047,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_diferencia; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterDiferencia(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitDiferencia(this);
-		}
 	}
 
 	public final DiferenciaContext diferencia() throws RecognitionException {
@@ -3470,14 +3102,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_azar; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterAzar(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitAzar(this);
-		}
 	}
 
 	public final AzarContext azar() throws RecognitionException {
@@ -3522,14 +3146,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_producto; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterProducto(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitProducto(this);
-		}
 	}
 
 	public final ProductoContext producto() throws RecognitionException {
@@ -3591,14 +3207,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_potencia; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterPotencia(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitPotencia(this);
-		}
 	}
 
 	public final PotenciaContext potencia() throws RecognitionException {
@@ -3647,14 +3255,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_division; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterDivision(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitDivision(this);
-		}
 	}
 
 	public final DivisionContext division() throws RecognitionException {
@@ -3703,14 +3303,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_suma; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterSuma(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitSuma(this);
-		}
 	}
 
 	public final SumaContext suma() throws RecognitionException {
@@ -3762,14 +3354,6 @@ public class LogoTECParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_rumbo; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).enterRumbo(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogoTECListener ) ((LogoTECListener)listener).exitRumbo(this);
-		}
 	}
 
 	public final RumboContext rumbo() throws RecognitionException {

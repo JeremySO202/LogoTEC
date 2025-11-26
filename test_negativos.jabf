@@ -1,9 +1,0 @@
-// {Test de numeros negativos}
-
-CENTRO;
-PONXY -150 150;
-PONXY 150 -150;
-PONXY -100 -100;
-INIC x = -50;
-AVANZA x;
-
