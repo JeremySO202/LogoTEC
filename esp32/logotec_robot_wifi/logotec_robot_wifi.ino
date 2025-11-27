@@ -343,8 +343,8 @@ void executeAvanza(double dist_objetivo)
         float derivada = (error - error_anterior) / dt;
         float control = KP_MOVE * error + KD_MOVE * derivada;
 
-        int speed_A = constrain(abs(control) * 0.86, MIN_SPEED_MOVE, MAX_SPEED_MOVE * 0.86);
-        int speed_B = constrain(abs(control), MIN_SPEED_MOVE, MAX_SPEED_MOVE);
+        int speed_A = constrain(abs(control), MIN_SPEED_MOVE, MAX_SPEED_MOVE);
+        int speed_B = constrain(abs(control) * 0.86, MIN_SPEED_MOVE, MAX_SPEED_MOVE * 0.86);
 
         moveForward(speed_A, speed_B);
 
