@@ -48,7 +48,7 @@ def monitor_serial(port, baudrate=115200):
         ser = serial.Serial(port, baudrate, timeout=1)
         time.sleep(2)  # Esperar a que se establezca la conexión
 
-        print("✓ Conexión establecida")
+        print("[OK] Conexion establecida")
         print("Presiona Ctrl+C para detener el monitoreo\n")
         print(f"{'─'*60}\n")
 
@@ -62,9 +62,9 @@ def monitor_serial(port, baudrate=115200):
                     pass
 
     except serial.SerialException as e:
-        print(f"\n❌ Error de conexión serial: {e}")
+        print(f"\n[ERROR] Error de conexion serial: {e}")
         print("Verifica que:")
-        print("  1. El ESP32 esté conectado")
+        print("  1. El ESP32 este conectado")
         print("  2. No haya otro programa usando el puerto")
         print("  3. Tengas permisos para acceder al puerto")
         sys.exit(1)
@@ -75,7 +75,7 @@ def monitor_serial(port, baudrate=115200):
         ser.close()
         sys.exit(0)
     except Exception as e:
-        print(f"\n❌ Error inesperado: {e}")
+        print(f"\n[ERROR] Error inesperado: {e}")
         sys.exit(1)
 
 
@@ -88,7 +88,7 @@ def main():
     port = find_esp32_port()
 
     if port:
-        print(f"\n✓ ESP32 detectado en: {port}")
+        print(f"\n[OK] ESP32 detectado en: {port}")
         response = input("¿Usar este puerto? (S/n): ").strip().lower()
         if response == "n":
             port = None
@@ -98,19 +98,19 @@ def main():
         ports = list_ports()
 
         if not ports:
-            print("\n❌ No se encontraron puertos seriales")
-            print("Verifica que el ESP32 esté conectado")
+            print("\n[ERROR] No se encontraron puertos seriales")
+            print("Verifica que el ESP32 este conectado")
             sys.exit(1)
 
         try:
-            selection = int(input("\nSelecciona el número del puerto: ")) - 1
+            selection = int(input("\nSelecciona el numero del puerto: ")) - 1
             if 0 <= selection < len(ports):
                 port = ports[selection].device
             else:
-                print("❌ Selección inválida")
+                print("[ERROR] Seleccion invalida")
                 sys.exit(1)
         except ValueError:
-            print("❌ Entrada inválida")
+            print("[ERROR] Entrada invalida")
             sys.exit(1)
 
     # Preguntar por el baudrate

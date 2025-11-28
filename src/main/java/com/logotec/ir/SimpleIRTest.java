@@ -33,7 +33,7 @@ public class SimpleIRTest {
         Path out = Paths.get("programa.ll");
         emitter.emit(program, out);
 
-        System.out.println("\n✓ Archivo LLVM generado: " + out.toAbsolutePath());
+        System.out.println("\n[OK] Archivo LLVM generado: " + out.toAbsolutePath());
     }
 }
 

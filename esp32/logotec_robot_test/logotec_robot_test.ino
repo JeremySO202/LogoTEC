@@ -120,7 +120,7 @@ void setup()
     // Calibrar MPU6050 (importante: mantener robot quieto)
     Serial.println("Calibrando MPU6050 (mantén el robot quieto)...");
     mpu.calcOffsets(); // Calcula offsets de giroscopio y acelerómetro
-    Serial.println("✓ Calibración completada!");
+    Serial.println("[OK] Calibracion completada!");
 
     // Configurar servo para lápiz
     ESP32PWM::allocateTimer(2);
@@ -328,7 +328,7 @@ void executeAvanza(double dist_objetivo)
         // Si llegamos a la tolerancia, salir
         if (error <= TOLERANCE_MOVE)
         {
-            Serial.println("   ✓ Distancia alcanzada!");
+            Serial.println("   [OK] Distancia alcanzada!");
             break;
         }
 
@@ -355,7 +355,7 @@ void executeAvanza(double dist_objetivo)
     stopMotors();
     delay(100);
 
-    Serial.printf("   ✓ Distancia estimada: %.2f cm\n", distancia_recorrida);
+    Serial.printf("   [OK] Distancia estimada: %.2f cm\n", distancia_recorrida);
 }
 
 // ============================================
@@ -382,7 +382,7 @@ void executeRetrocede(double dist_objetivo)
 
         if (error <= TOLERANCE_MOVE)
         {
-            Serial.println("   ✓ Distancia alcanzada!");
+            Serial.println("   [OK] Distancia alcanzada!");
             break;
         }
 
@@ -403,7 +403,7 @@ void executeRetrocede(double dist_objetivo)
     stopMotors();
     delay(100);
 
-    Serial.printf("   ✓ Distancia estimada: %.2f cm\n", distancia_recorrida);
+    Serial.printf("   [OK] Distancia estimada: %.2f cm\n", distancia_recorrida);
 }
 
 // ============================================
@@ -590,9 +590,9 @@ void executeGiraIzquierda(double deg)
     if (girado_total < -180)
         girado_total += 360;
 
-    Serial.printf("   ✓ Ángulo final: %.2f°\n", angulo_final);
-    Serial.printf("   ✓ Total girado: %.2f° (objetivo: %.2f°)\n", girado_total, deg);
-    Serial.printf("   ✓ Error: %.2f°\n", deg - girado_total);
+    Serial.printf("   [OK] Angulo final: %.2f°\n", angulo_final);
+    Serial.printf("   [OK] Total girado: %.2f° (objetivo: %.2f°)\n", girado_total, deg);
+    Serial.printf("   [OK] Error: %.2f°\n", deg - girado_total);
 }
 
 // ============================================
@@ -659,14 +659,14 @@ void executeBajaLapiz()
 {
     penServo.write(PEN_DOWN_ANGLE);
     delay(500); // Esperar a que el servo complete el movimiento
-    Serial.println("   ✓ Lápiz bajado");
+    Serial.println("   [OK] Lapiz bajado");
 }
 
 void executeSubeLapiz()
 {
     penServo.write(PEN_UP_ANGLE);
     delay(500); // Esperar a que el servo complete el movimiento
-    Serial.println("   ✓ Lápiz subido");
+    Serial.println("   [OK] Lapiz subido");
 }
 
 // ============================================
