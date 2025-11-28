@@ -134,8 +134,17 @@ public class IDLE_Controller implements Initializable {
      */
     private void compileToExecutable(String sourceCode) {
         try {
+            // Obtener el directorio base del proyecto (LogoTEC)
+            // Intentamos encontrar el directorio que contiene src/main/java
             String workingDir = System.getProperty("user.dir");
-            String srcDir = workingDir + "/src/main/java";
+            String srcDir;
+            
+            // Si el directorio actual es proyectoCompi, buscar LogoTEC
+            if (workingDir.endsWith("proyectoCompi")) {
+                srcDir = workingDir + "/LogoTEC/src/main/java";
+            } else {
+                srcDir = workingDir + "/src/main/java";
+            }
 
             // Verificar que exista el runtime compilado
             File runtimeObj = new File(srcDir, "logo_runtime.o");
@@ -209,7 +218,7 @@ public class IDLE_Controller implements Initializable {
         System.out.println("Compilando runtime C++...");
 
         ProcessBuilder pb = new ProcessBuilder(
-                "clang++", "-c", "logo_runtime.cpp", "-o", "logo_runtime.o", "-std=c++11"
+                "/usr/bin/clang++", "-c", "logo_runtime.cpp", "-o", "logo_runtime.o", "-std=c++11"
         );
         pb.directory(new File(srcDir));
         pb.redirectErrorStream(true);
@@ -266,7 +275,7 @@ public class IDLE_Controller implements Initializable {
         File programObj = new File(srcDir, "programa.o");
         if (!programObj.exists()) {
             System.out.println("Compilando LLVM IR a código objeto...");
-            ProcessBuilder pb1 = new ProcessBuilder("llc", "-filetype=obj", "programa.ll", "-o", "programa.o");
+            ProcessBuilder pb1 = new ProcessBuilder("/usr/bin/llc", "-filetype=obj", "programa.ll", "-o", "programa.o");
             pb1.directory(new File(srcDir));
             pb1.redirectErrorStream(true);
 
@@ -312,7 +321,7 @@ public class IDLE_Controller implements Initializable {
     private void compileToNative(String srcDir) throws Exception {
         // Paso 1: Compilar LLVM IR a código objeto
         System.out.println("Compilando LLVM IR a código objeto...");
-        ProcessBuilder pb1 = new ProcessBuilder("llc", "-filetype=obj", "programa.ll", "-o", "programa.o");
+        ProcessBuilder pb1 = new ProcessBuilder("/usr/bin/llc", "-filetype=obj", "programa.ll", "-o", "programa.o");
         pb1.directory(new File(srcDir));
         pb1.redirectErrorStream(true);
 
@@ -335,7 +344,7 @@ public class IDLE_Controller implements Initializable {
         // Paso 2: Enlazar con el runtime y crear ejecutable final
         System.out.println("Enlazando con runtime...");
         ProcessBuilder pb2 = new ProcessBuilder(
-                "clang++", "programa.o", "logo_runtime.o", "-o", "program", "-lm"
+                "/usr/bin/clang++", "programa.o", "logo_runtime.o", "-o", "program", "-lm"
         );
         pb2.directory(new File(srcDir));
         pb2.redirectErrorStream(true);
@@ -368,7 +377,15 @@ public class IDLE_Controller implements Initializable {
 
         try {
             String workingDir = System.getProperty("user.dir");
-            String srcDir = workingDir + "/src/main/java";
+            String srcDir;
+            
+            // Si el directorio actual es proyectoCompi, buscar LogoTEC
+            if (workingDir.endsWith("proyectoCompi")) {
+                srcDir = workingDir + "/LogoTEC/src/main/java";
+            } else {
+                srcDir = workingDir + "/src/main/java";
+            }
+            
             File executable = new File(srcDir, "program");
 
             if (!executable.exists()) {
@@ -444,7 +461,14 @@ public class IDLE_Controller implements Initializable {
             System.out.println("Conectando a robot en: " + robotIp);
 
             String workingDir = System.getProperty("user.dir");
-            String srcDir = workingDir + "/src/main/java";
+            String srcDir;
+            
+            // Si el directorio actual es proyectoCompi, buscar LogoTEC
+            if (workingDir.endsWith("proyectoCompi")) {
+                srcDir = workingDir + "/LogoTEC/src/main/java";
+            } else {
+                srcDir = workingDir + "/src/main/java";
+            }
 
             // Verificar que exista el runtime WiFi compilado
             File runtimeWiFiObj = new File(srcDir, "logo_runtime_wifi.o");
