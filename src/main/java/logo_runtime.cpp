@@ -20,6 +20,11 @@ extern "C" {
     // ============================================
     // Estado y control general
     // ============================================
+    void logo_init_runtime(int argc, char** argv) {
+        // En el runtime normal no se hace nada con los argumentos
+        // Esta función existe solo para compatibilidad con el runtime WiFi
+    }
+
     void logo_reset() {
         std::lock_guard<std::mutex> lock(s_mutex);
         s_x = 0.0;

@@ -1,4 +1,5 @@
 ; Runtime Logo functions
+declare void @logo_init_runtime(i32, i8**)
 declare void @logo_reset()
 declare void @logo_avanza(double)
 declare void @logo_retrocede(double)
@@ -30,8 +31,9 @@ declare void @logo_show()
 @var_t9 = global double 0.0
 @var_tam = global double 0.0
 
-define i32 @main() {
+define i32 @main(i32 %argc, i8** %argv) {
 entry:
+  call void @logo_init_runtime(i32 %argc, i8** %argv)
   call void @logo_reset()
   br label %_block_
 

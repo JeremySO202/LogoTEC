@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -39,6 +40,9 @@ public class IDLE_Controller implements Initializable {
 
     @FXML
     private TextArea codeArea;
+
+    @FXML
+    private TextField robotIpField;
 
     @FXML
     private Canvas canvas;
@@ -147,7 +151,7 @@ public class IDLE_Controller implements Initializable {
             // Verificar que exista el runtime compilado
             File runtimeObj = new File(srcDir, "logo_runtime.o");
             if (!runtimeObj.exists()) {
-                System.err.println(" Runtime no compilado, compilando logo_runtime.cpp...");
+                System.err.println("Runtime no compilado, compilando logo_runtime.cpp...");
                 compileRuntime(srcDir);
             }
 
@@ -238,6 +242,82 @@ public class IDLE_Controller implements Initializable {
     }
 
     /**
+     * Compila el runtime WiFi de C++ a .o
+     */
+    private void compileWiFiRuntime(String srcDir) throws Exception {
+        System.out.println("Compilando runtime WiFi C++...");
+
+        ProcessBuilder pb = new ProcessBuilder(
+                "g++", "-c", "logo_runtime_wifi.cpp", "-o", "logo_runtime_wifi.o", "-std=c++11"
+        );
+        pb.directory(new File(srcDir));
+        pb.redirectErrorStream(true);
+
+        Process process = pb.start();
+
+        Scanner scanner = new Scanner(process.getInputStream());
+        while (scanner.hasNextLine()) {
+            System.out.println(scanner.nextLine());
+        }
+        scanner.close();
+
+        int exitCode = process.waitFor();
+        if (exitCode != 0) {
+            throw new RuntimeException("Error compilando runtime WiFi C++");
+        }
+
+        System.out.println("Runtime WiFi compilado exitosamente");
+    }
+
+    /**
+     * Compila el programa con el runtime WiFi
+     */
+    private void compileToWiFiExecutable(String srcDir) throws Exception {
+        // Paso 1: Compilar LLVM IR a código objeto (si no existe)
+        File programObj = new File(srcDir, "programa.o");
+        if (!programObj.exists()) {
+            System.out.println("Compilando LLVM IR a código objeto...");
+            ProcessBuilder pb1 = new ProcessBuilder("llc", "-filetype=obj", "programa.ll", "-o", "programa.o");
+            pb1.directory(new File(srcDir));
+            pb1.redirectErrorStream(true);
+
+            Process process1 = pb1.start();
+            Scanner scanner1 = new Scanner(process1.getInputStream());
+            while (scanner1.hasNextLine()) {
+                System.out.println(scanner1.nextLine());
+            }
+            scanner1.close();
+
+            int exitCode1 = process1.waitFor();
+            if (exitCode1 != 0) {
+                throw new RuntimeException("Error compilando LLVM IR");
+            }
+        }
+
+        // Paso 2: Enlazar con el runtime WiFi
+        System.out.println("Enlazando con runtime WiFi...");
+        ProcessBuilder pb2 = new ProcessBuilder(
+                "g++", "programa.o", "logo_runtime_wifi.o", "-o", "program_wifi"
+        );
+        pb2.directory(new File(srcDir));
+        pb2.redirectErrorStream(true);
+
+        Process process2 = pb2.start();
+        Scanner scanner2 = new Scanner(process2.getInputStream());
+        while (scanner2.hasNextLine()) {
+            System.out.println(scanner2.nextLine());
+        }
+        scanner2.close();
+
+        int exitCode2 = process2.waitFor();
+        if (exitCode2 != 0) {
+            throw new RuntimeException("Error en enlazado WiFi");
+        }
+
+        System.out.println("Ejecutable WiFi 'program_wifi' creado exitosamente");
+    }
+
+    /**
      * Compila el archivo LLVM IR a código nativo
      */
     private void compileToNative(String srcDir) throws Exception {
@@ -309,7 +389,7 @@ public class IDLE_Controller implements Initializable {
             File executable = new File(srcDir, "program");
 
             if (!executable.exists()) {
-                System.err.println(" No se encontró el ejecutable. Debe compilar primero.");
+                System.err.println("ERROR: No se encontró el ejecutable. Debe compilar primero.");
                 System.err.println("Buscando en: " + executable.getAbsolutePath());
                 return;
             }
@@ -353,6 +433,85 @@ public class IDLE_Controller implements Initializable {
 
         } catch (Exception e) {
             System.err.println("Error ejecutando el programa: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Ejecuta el programa en el robot ESP32 vía WiFi HTTP
+     */
+    @FXML
+    public void executeWiFi(ActionEvent actionEvent) {
+        System.out.println("Ejecutando programa en robot ESP32 vía WiFi...");
+
+        try {
+            // Obtener IP del campo de texto
+            String robotIp = robotIpField.getText().trim();
+            if (robotIp.isEmpty()) {
+                System.err.println("ERROR: Debe ingresar la IP del robot");
+                return;
+            }
+
+            // Validar formato de IP básico
+            if (!robotIp.matches("\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}")) {
+                System.err.println("ERROR: Formato de IP inválido. Use formato: xxx.xxx.xxx.xxx");
+                return;
+            }
+
+            System.out.println("Conectando a robot en: " + robotIp);
+
+            String workingDir = System.getProperty("user.dir");
+            String srcDir = workingDir + "/src/main/java";
+
+            // Verificar que exista el runtime WiFi compilado
+            File runtimeWiFiObj = new File(srcDir, "logo_runtime_wifi.o");
+            if (!runtimeWiFiObj.exists()) {
+                System.err.println("Runtime WiFi no compilado, compilando logo_runtime_wifi.cpp...");
+                compileWiFiRuntime(srcDir);
+            }
+
+            // Compilar el programa con runtime WiFi
+            System.out.println("Compilando programa para WiFi...");
+            compileToWiFiExecutable(srcDir);
+
+            // Ejecutar el programa WiFi con la IP como argumento
+            File executable = new File(srcDir, "program_wifi");
+            if (!executable.exists()) {
+                System.err.println("ERROR: No se encontró el ejecutable program_wifi");
+                return;
+            }
+
+            if (!executable.canExecute()) {
+                ProcessBuilder chmodPb = new ProcessBuilder("chmod", "+x", executable.getAbsolutePath());
+                chmodPb.start().waitFor();
+            }
+
+            // Ejecutar y capturar salida pasando la IP como argumento
+            ProcessBuilder pb = new ProcessBuilder(executable.getAbsolutePath(), robotIp);
+            pb.directory(executable.getParentFile());
+            pb.redirectErrorStream(true);
+
+            System.out.println("Ejecutando: " + executable.getAbsolutePath());
+            System.out.println("=" .repeat(50));
+            Process process = pb.start();
+
+            Scanner scanner = new Scanner(process.getInputStream());
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                System.out.println(line);
+            }
+            scanner.close();
+
+            int exitCode = process.waitFor();
+            System.out.println("=" .repeat(50));
+            if (exitCode == 0) {
+                System.out.println("Programa ejecutado exitosamente en el robot");
+            } else {
+                System.err.println("ERROR: Error en ejecución (código: " + exitCode + ")");
+            }
+
+        } catch (Exception e) {
+            System.err.println("Error ejecutando en WiFi: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -437,7 +596,7 @@ public class IDLE_Controller implements Initializable {
                     break;
             }
         } catch (Exception e) {
-            System.err.println("Error procesando comando: " + command);
+            System.err.println("ERROR procesando comando: " + command);
         }
     }
 
@@ -477,6 +636,7 @@ public class IDLE_Controller implements Initializable {
         codeArea.clear();
         currentFile = null;
         clearCanvas();
+        System.out.println("Contenido borrado");
         System.out.println("Contenido borrado");
     }
 

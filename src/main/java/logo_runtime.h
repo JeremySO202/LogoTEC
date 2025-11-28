@@ -8,6 +8,7 @@ extern "C" {
 // ============================================
 // Estado y control general
 // ============================================
+void logo_init_runtime(int argc, char** argv); // inicializa runtime con argumentos
 void logo_reset();              // resetea la posición y estado
 
 // ============================================
