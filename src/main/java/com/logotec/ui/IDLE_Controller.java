@@ -98,7 +98,7 @@ public class IDLE_Controller implements Initializable {
             String msg = "No hay código para compilar";
             System.err.println(msg);
             errorPanel.appendText(msg + "\n");
-            return;
+            return false;
         }
 
         try {
@@ -124,7 +124,7 @@ public class IDLE_Controller implements Initializable {
                 String errorMsg = "[ERROR] Errores de sintaxis encontrados";
                 System.err.println(errorMsg);
                 errorPanel.appendText(errorMsg + "\n");
-                return;
+                return false;
             }
 
             // Fase 2: Análisis semántico
@@ -155,12 +155,14 @@ public class IDLE_Controller implements Initializable {
             errorPanel.appendText("\n[OK] Compilacion completada exitosamente\n");
             errorPanel.appendText("[OK] Ejecutable generado: program\n");
             errorPanel.appendText("=======================================================\n");
+            return true;
 
         } catch (Exception e) {
             String errorMsg = "Error durante la compilación: " + e.getMessage();
             System.err.println(errorMsg);
             e.printStackTrace();
             errorPanel.appendText("[ERROR] " + errorMsg + "\n");
+            return false;
         }
     }
 
