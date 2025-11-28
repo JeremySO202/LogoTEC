@@ -20,6 +20,9 @@ import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.BaseErrorListener;
+import org.antlr.v4.runtime.RecognitionException;
+import org.antlr.v4.runtime.Recognizer;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -30,9 +33,7 @@ import java.nio.file.Paths;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
-/**
- * Controlador principal de la interfaz gráfica de LogoTEC
- */
+
 public class IDLE_Controller implements Initializable {
 
     private FileChooser fileChooser = new FileChooser();
@@ -48,7 +49,7 @@ public class IDLE_Controller implements Initializable {
     private Canvas canvas;
 
     @FXML
-    private ScrollPane errorPanel;
+    private TextArea errorPanel;
 
     /**
      * Abre un archivo y carga su contenido en el área de código
@@ -90,53 +91,76 @@ public class IDLE_Controller implements Initializable {
      */
     private boolean compileInternal() {
         System.out.println("Iniciando compilación...");
+        errorPanel.clear();
 
         String sourceCode = codeArea.getText().trim();
         if (sourceCode.isEmpty()) {
-            System.err.println("No hay código para compilar");
-            return false;
+            String msg = "No hay código para compilar";
+            System.err.println(msg);
+            errorPanel.appendText(msg + "\n");
+            return;
         }
 
         try {
             // Fase 1: Análisis léxico y sintáctico
-            System.out.println("Fase 1: Análisis léxico y sintáctico");
+            System.out.println("Fase 1: Analisis lexico y sintactico");
+            errorPanel.appendText("=======================================================\n");
+            errorPanel.appendText("Fase 1: Analisis lexico y sintactico\n");
+            
             CharStream input = CharStreams.fromString(sourceCode);
             LogoTECLexer lexer = new LogoTECLexer(input);
             CommonTokenStream tokens = new CommonTokenStream(lexer);
             LogoTECParser parser = new LogoTECParser(tokens);
+            
+            // Agregar el custom error listener
+            parser.removeErrorListeners();
+            parser.addErrorListener(new ErrorPanelListener());
+            lexer.removeErrorListeners();
+            lexer.addErrorListener(new ErrorPanelListener());
+            
             ParseTree tree = parser.program();
 
             if (parser.getNumberOfSyntaxErrors() > 0) {
-                System.err.println("Errores de sintaxis encontrados");
-                return false;
+                String errorMsg = "[ERROR] Errores de sintaxis encontrados";
+                System.err.println(errorMsg);
+                errorPanel.appendText(errorMsg + "\n");
+                return;
             }
 
             // Fase 2: Análisis semántico
-            System.out.println("Fase 2: Análisis semántico");
+            System.out.println("Fase 2: Analisis semantico");
+            errorPanel.appendText("\nFase 2: Analisis semantico\n");
             ErrorReporter reporter = new ErrorReporter();
             SemanticAnalyzer analyzer = new SemanticAnalyzer(reporter);
             analyzer.visit(tree);
 
             if (reporter.hasErrors()) {
-                System.err.println("Errores semánticos encontrados:");
+                errorPanel.appendText("[ERROR] Errores semanticos encontrados:\n");
+                System.err.println("Errores semanticos encontrados:");
                 for (SemanticError error : reporter.getErrors()) {
-                    System.err.println("  • " + error.toString());
+                    String err = "  - " + error.toString();
+                    System.err.println(err);
+                    errorPanel.appendText(err + "\n");
                 }
                 return false;
             }
 
             // Fase 3: Generación de código
             System.out.println("Fase 3: Generación de código intermedio");
+            errorPanel.appendText("\nFase 3: Generacion de codigo intermedio\n");
             compileToExecutable(sourceCode);
 
             System.out.println("Compilación completada exitosamente");
             System.out.println("Ejecutable generado: program");
-            return true;
+            errorPanel.appendText("\n[OK] Compilacion completada exitosamente\n");
+            errorPanel.appendText("[OK] Ejecutable generado: program\n");
+            errorPanel.appendText("=======================================================\n");
 
         } catch (Exception e) {
-            System.err.println("Error durante la compilación: " + e.getMessage());
+            String errorMsg = "Error durante la compilación: " + e.getMessage();
+            System.err.println(errorMsg);
             e.printStackTrace();
-            return false;
+            errorPanel.appendText("[ERROR] " + errorMsg + "\n");
         }
     }
 
@@ -714,6 +738,19 @@ public class IDLE_Controller implements Initializable {
     private void clearCanvas() {
         if (canvas != null) {
             canvas.getGraphicsContext2D().clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        }
+    }
+
+    /**
+     * Custom ErrorListener para capturar errores de ANTLR
+     */
+    private class ErrorPanelListener extends BaseErrorListener {
+        @Override
+        public void syntaxError(Recognizer<?, ?> recognizer, Object offendingSymbol, int line, int charPositionInLine,
+                                String msg, RecognitionException e) {
+            String errorMessage = String.format("line %d:%d %s", line, charPositionInLine, msg);
+            errorPanel.appendText(errorMessage + "\n");
+            System.err.println(errorMessage);
         }
     }
 }
