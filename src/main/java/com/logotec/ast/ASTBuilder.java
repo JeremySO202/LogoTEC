@@ -202,8 +202,27 @@ public class ASTBuilder extends LogoTECBaseVisitor<Node> {
         // PONCOLORLAPIZ recibe un COLOR (token)
         String colorText = ctx.COLOR().getText();
         Token t = ctx.getStart();
-        Expr color = new LiteralExpr(colorText, t.getLine(), t.getCharPositionInLine());
+        
+        // Convertir el nombre del color a su valor numérico
+        int colorValue = convertirColorANumero(colorText);
+        
+        // Crear un LiteralExpr con el NÚMERO, no el texto
+        Expr color = new LiteralExpr((double)colorValue, t.getLine(), t.getCharPositionInLine());
         return new Poncolorlapiz(color, t.getLine(), t.getCharPositionInLine());
+    }
+
+    private int convertirColorANumero(String colorText) {
+        switch (colorText.toUpperCase()) {
+            case "NEGRO":
+                return 0;
+            case "AZUL":
+                return 1;
+            case "ROJO":
+                return 2;
+            default:
+                System.err.println("Color desconocido: " + colorText + ", usando NEGRO por defecto");
+                return 0;
+        }
     }
 
     @Override
