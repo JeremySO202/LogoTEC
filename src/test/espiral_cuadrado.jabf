@@ -33,7 +33,7 @@ REPITE 80 [
     HAZ rotacion (SUMA rotacion 3);
     PONRUMBO rotacion;
 
-    // Aumentar tamaño gradualmente
+    // Aumentar tamano gradualmente
     HAZ tam (SUMA tam 3);
 ];
 

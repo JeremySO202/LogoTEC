@@ -77,15 +77,24 @@ public class IDLE_Controller implements Initializable {
 
     /**
      * Compila el código actual y genera el ejecutable
+     * @return true si la compilación fue exitosa, false si hay errores
      */
     @FXML
     public void compile(ActionEvent actionEvent) {
+        compileInternal();
+    }
+
+    /**
+     * Compila el código interno y retorna el estado
+     * @return true si la compilación fue exitosa, false si hay errores
+     */
+    private boolean compileInternal() {
         System.out.println("Iniciando compilación...");
 
         String sourceCode = codeArea.getText().trim();
         if (sourceCode.isEmpty()) {
             System.err.println("No hay código para compilar");
-            return;
+            return false;
         }
 
         try {
@@ -99,7 +108,7 @@ public class IDLE_Controller implements Initializable {
 
             if (parser.getNumberOfSyntaxErrors() > 0) {
                 System.err.println("Errores de sintaxis encontrados");
-                return;
+                return false;
             }
 
             // Fase 2: Análisis semántico
@@ -113,7 +122,7 @@ public class IDLE_Controller implements Initializable {
                 for (SemanticError error : reporter.getErrors()) {
                     System.err.println("  • " + error.toString());
                 }
-                return;
+                return false;
             }
 
             // Fase 3: Generación de código
@@ -122,10 +131,12 @@ public class IDLE_Controller implements Initializable {
 
             System.out.println("Compilación completada exitosamente");
             System.out.println("Ejecutable generado: program");
+            return true;
 
         } catch (Exception e) {
             System.err.println("Error durante la compilación: " + e.getMessage());
             e.printStackTrace();
+            return false;
         }
     }
 
@@ -364,6 +375,12 @@ public class IDLE_Controller implements Initializable {
      */
     @FXML
     public void execute(ActionEvent actionEvent) {
+        // Verificar si hay compilación exitosa
+        if (!compileInternal()) {
+            System.err.println("No se puede ejecutar: hay errores de compilación");
+            return;
+        }
+
         System.out.println("Ejecutando programa compilado...");
 
         try {
@@ -516,7 +533,6 @@ public class IDLE_Controller implements Initializable {
             switch (parts[0]) {
                 case "RESET":
                     clearCanvas();
-                    // Configurar estilo inicial
                     gc.setStroke(Color.BLACK);
                     gc.setLineWidth(2.0);
                     break;
@@ -548,7 +564,7 @@ public class IDLE_Controller implements Initializable {
                     break;
 
                 case "PENDOWN":
-                    gc.setStroke(Color.BLACK);
+                    // El lápiz se baja pero mantiene el color actual
                     break;
 
                 case "PENUP":
@@ -566,12 +582,6 @@ public class IDLE_Controller implements Initializable {
                                 break;
                             case "ROJO":
                                 gc.setStroke(Color.RED);
-                                break;
-                            case "VERDE":
-                                gc.setStroke(Color.GREEN);
-                                break;
-                            case "AMARILLO":
-                                gc.setStroke(Color.YELLOW);
                                 break;
                         }
                     }
@@ -626,6 +636,7 @@ public class IDLE_Controller implements Initializable {
         codeArea.clear();
         currentFile = null;
         clearCanvas();
+        System.out.println("Contenido borrado");
         System.out.println("Contenido borrado");
     }
 
